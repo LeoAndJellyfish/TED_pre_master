@@ -1,0 +1,4 @@
+interface:
+  display_name: "TED_pre_master"
+  short_description: "依据听众、证据与时间安排演讲结构，创作自然、准确、可直接试讲的中文讲稿"
+  default_prompt: "请使用 $ted-pre-master，根据我的资料、听众与时长写出可直接试讲的演讲稿，并核对推理衔接、事实和口语表达。"
