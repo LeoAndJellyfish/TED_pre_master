@@ -4,10 +4,16 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import shutil
 from pathlib import Path
 
 from build_release import ROOT, payload_files
+
+
+def default_destination() -> Path:
+    codex_directory = Path(os.environ["CODEX_HOME"]).expanduser() if os.environ.get("CODEX_HOME") else Path.home() / ".codex"
+    return codex_directory / "skills" / "ted-pre-master"
 
 
 def install(destination: Path) -> dict:
@@ -26,7 +32,7 @@ def install(destination: Path) -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--dest", type=Path, default=Path.home() / ".codex/skills/ted-pre-master")
+    parser.add_argument("--dest", type=Path, default=default_destination())
     args = parser.parse_args()
     try:
         result = install(args.dest)

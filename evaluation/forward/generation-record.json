@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "run_type": "forward_frozen_skill_first_generation",
+  "completed_at": "2026-10-18T20:28:14.103090+08:00",
+  "model_id": null,
+  "model_id_note": "Exact model ID is unavailable to the writing agent; no inference made.",
+  "skill_path": "SKILL.md",
+  "references_read": [
+    "references/architecture.md",
+    "references/spoken-chinese.md",
+    "references/facts-and-rehearsal.md"
+  ],
+  "post_review_skill_manifest": {
+    "path": "evaluation/post-review-skill-manifest.json",
+    "sha256": "501bd2a9e113d51854f58fcd1b77f8656d30c7fcfc105d2bb7ed62be7c5088c9",
+    "file_verification": [
+      {
+        "path": "LICENSE",
+        "expected": "73069e2b170d1abe885f86c5a69b1a32ea0de9806965c485756136d675be10d1",
+        "actual": "73069e2b170d1abe885f86c5a69b1a32ea0de9806965c485756136d675be10d1",
+        "match": true
+      },
+      {
+        "path": "SKILL.md",
+        "expected": "0e267ce843e0f38b958d25bcab03119966da3cc67d1c01f84cfc88d9c43421cc",
+        "actual": "0e267ce843e0f38b958d25bcab03119966da3cc67d1c01f84cfc88d9c43421cc",
+        "match": true
+      },
+      {
+        "path": "agents/openai.yaml",
+        "expected": "a01967a5a1f468b4c8014c90d010366bd6a4abdf81d7cd6ce9b6fc3da3a1a806",
+        "actual": "a01967a5a1f468b4c8014c90d010366bd6a4abdf81d7cd6ce9b6fc3da3a1a806",
+        "match": true
+      },
+      {
+        "path": "references/architecture.md",
+        "expected": "c069752ac30ba3803c6af7e9027db56c704a543b4365d392b8fc3cb033db44d7",
+        "actual": "c069752ac30ba3803c6af7e9027db56c704a543b4365d392b8fc3cb033db44d7",
+        "match": true
+      },
+      {
+        "path": "references/facts-and-rehearsal.md",
+        "expected": "71ec81b0d057de12223a851085632e25a0eedcd0afea45eeb8104e685d4f5820",
+        "actual": "71ec81b0d057de12223a851085632e25a0eedcd0afea45eeb8104e685d4f5820",
+        "match": true
+      },
+      {
+        "path": "references/spoken-chinese.md",
+        "expected": "d3f41f011ec787e43190b62ded31c5830b653ed425fc3649a2f6fe066a61fe8c",
+        "actual": "d3f41f011ec787e43190b62ded31c5830b653ed425fc3649a2f6fe066a61fe8c",
+        "match": true
+      },
+      {
+        "path": "references/ted-evidence.md",
+        "expected": "14d48f997dcdf61f36a2c75654c5f58ccb871e27034c601cea1cb84f9b1856dc",
+        "actual": "14d48f997dcdf61f36a2c75654c5f58ccb871e27034c601cea1cb84f9b1856dc",
+        "match": true
+      },
+      {
+        "path": "scripts/speech_check.py",
+        "expected": "3f7b625019cedc992d597c9af06050cea9f4772fcbb9613968f7150f6a9c837f",
+        "actual": "3f7b625019cedc992d597c9af06050cea9f4772fcbb9613968f7150f6a9c837f",
+        "match": true
+      }
+    ],
+    "all_frozen_file_hashes_match": true
+  },
+  "input_cases_file": {
+    "path": "evaluation/forward/cases.json",
+    "sha256_verification": {
+      "match": true,
+      "expected": "ef5d6e3bff06b30d5962f073d9694cd71bba1a71d10d5464ab9418112b3fc241",
+      "actual": "ef5d6e3bff06b30d5962f073d9694cd71bba1a71d10d5464ab9418112b3fc241"
+    }
+  },
+  "input_isolation": {
+    "writer_received_only_user_input_fields": true,
+    "fields_not_read": [
+      "listener_recall_questions"
+    ],
+    "not_read": [
+      "judge-notes.md",
+      "evaluation rubrics",
+      "expected answers",
+      "development cases",
+      "previous runs",
+      "reviews",
+      "author summaries",
+      "post-generation feedback"
+    ],
+    "source_draft_note": "Only the second case's explicitly supplied user revision draft was read."
+  },
+  "generation_policy": {
+    "first_saved_deliverables_retained": true,
+    "skill_and_cases_modified": false,
+    "external_sources_introduced": false,
+    "post_generation_feedback_used": false,
+    "independent_listener_review_performed": false,
+    "live_or_recorded_rehearsal_performed": false
+  },
+  "cases": [
+    {
+      "id": "forward_01_evidence_and_spotlight",
+      "received_fields": [
+        "id",
+        "title",
+        "user_request",
+        "context",
+        "fact_pack",
+        "constraints"
+      ],
+      "output_file": "forward_01_evidence_and_spotlight.md",
+      "body_readable_characters": 1351,
+      "time_estimation": {
+        "calibrated_by_speaker": false,
+        "assumed_readable_characters_per_minute": 200,
+        "total_action_and_pause_seconds": 15,
+        "estimated_total_minutes": 7.0
+      },
+      "checks_performed": [
+        "Input-only factual self-check",
+        "Arithmetic: (120-96)/120=20%; (120-117)/120=2.5%; (120-94)/120 approximately 21.7%",
+        "Scope and attribution self-check",
+        "Postscript under 120 characters"
+      ],
+      "postscript_characters": 75,
+      "output_sha256": "0b228531f9b639f6c74193308825232757eee7b4ee25297627db7f7c6c90542a"
+    },
+    {
+      "id": "forward_02_revision_voice_and_delay",
+      "received_fields": [
+        "id",
+        "title",
+        "user_request",
+        "context",
+        "source_draft",
+        "fact_pack",
+        "constraints"
+      ],
+      "output_file": "forward_02_revision_voice_and_delay.md",
+      "body_readable_characters": 1278,
+      "time_estimation": {
+        "calibrated_by_speaker": false,
+        "assumed_readable_characters_per_minute": 220,
+        "total_action_and_pause_seconds": 12,
+        "estimated_total_minutes": 6.0
+      },
+      "checks_performed": [
+        "Input-only factual self-check",
+        "Arithmetic: 37.5+0.16*8+1.2=39.98, rounded to 40.0 at stated demonstration precision",
+        "Protected opening, middle sentence, and closing retained verbatim",
+        "Postscript under 150 characters"
+      ],
+      "postscript_characters": 95,
+      "output_sha256": "b217cd4e76d10b3a00ba000550f8f592496bb2d680cdd3b2d410c156369ba487"
+    }
+  ],
+  "publication_note": "Only local absolute paths were replaced with repository-relative paths. Script content is unchanged."
+}

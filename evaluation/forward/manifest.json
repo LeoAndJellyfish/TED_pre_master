@@ -1,0 +1,27 @@
+{
+  "frozen_skill_manifest": "evaluation/post-review-skill-manifest.json",
+  "skill_manifest_sha256": "501bd2a9e113d51854f58fcd1b77f8656d30c7fcfc105d2bb7ed62be7c5088c9",
+  "generation_contexts": 1,
+  "tasks": 2,
+  "first_outputs_unchanged": true,
+  "outputs": [
+    {
+      "task": "forward_01_evidence_and_spotlight",
+      "file": "evaluation/outputs/forward/forward_01_evidence_and_spotlight.md",
+      "sha256": "0b228531f9b639f6c74193308825232757eee7b4ee25297627db7f7c6c90542a"
+    },
+    {
+      "task": "forward_02_revision_voice_and_delay",
+      "file": "evaluation/outputs/forward/forward_02_revision_voice_and_delay.md",
+      "sha256": "b217cd4e76d10b3a00ba000550f8f592496bb2d680cdd3b2d410c156369ba487"
+    }
+  ],
+  "resources": {
+    "evaluation/forward/cases.json": "ef5d6e3bff06b30d5962f073d9694cd71bba1a71d10d5464ab9418112b3fc241",
+    "evaluation/forward/generation-record.json": "c0ab4d0f74fd748a8b3a2c4b2a1d9ae637a64ae202fe326c461c69097b491977",
+    "evaluation/forward/judge-notes.md": "8bba140ce013a6e34c270d0800eac6d2f6cf52c48338e9f421295c7e69e81331",
+    "evaluation/reviews/forward/fact-review.json": "4a50838c56f9021e87f3aae583246dbf7b39d34addb7d3b5e0174cde6f4ee131",
+    "evaluation/reviews/forward/first-read.json": "82cc2147ddfc533f94b1b771feb1bf5d26c6c3555a9bd599de79e30318abe26c",
+    "evaluation/reviews/forward/ordered-review.json": "6e774f68fb89b0260d67c6b4c158799a56b0c4c4387bb2e85d4b41e9979dd2b7"
+  }
+}

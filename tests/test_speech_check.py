@@ -41,8 +41,21 @@ class SpeechChecks(unittest.TestCase):
     def test_missing_section_and_invalid_speed_fail(self):
         with self.assertRaises(ValueError):
             speech.inspect("正文", section="不存在")
-        with self.assertRaises(ValueError):
-            speech.inspect("正文", cpm=0)
+        for speed in (0, -1, float("nan"), float("inf"), -float("inf")):
+            with self.subTest(speed=speed), self.assertRaises(ValueError):
+                speech.inspect("正文", cpm=speed)
+
+    def test_long_fence_requires_matching_length_and_empty_closing_suffix(self):
+        text = "## 正文\n甲。\n````md\n```\n## 假标题\n隐藏\n```` trailing\n继续隐藏\n`````\n乙。\n## 附录\n附录。"
+        self.assertEqual(speech.inspect(text, "正文")["han_characters"], 2)
+        self.assertEqual(speech.inspect(text)["han_characters"], 4)
+
+    def test_editorial_comments_and_footnotes_keep_constraint_line_numbers(self):
+        text = "## 正文\n甲[^ref]。<!-- 不读 [停顿 90秒]\n## 假标题\n-->\n乙。\n[^ref]: 来源内容\n    续注\n\n丙需核对。\n## 附录\n隐藏。"
+        result = speech.inspect(text, "正文", forbid=("核对",))
+        self.assertEqual(result["han_characters"], 6)
+        self.assertEqual(result["fixed_cue_seconds"], 0)
+        self.assertEqual(result["user_constraint_hits"][0]["line"], 9)
 
 
 if __name__ == "__main__":

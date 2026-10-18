@@ -1,2 +1,5 @@
 * text=auto eol=lf
 *.zip binary
+# Preserve exact frozen evidence bytes referenced by run and review records.
+evaluation/post-review-skill-manifest.json -text whitespace=cr-at-eol
+evaluation/reviews/forward/first-read.json -text whitespace=cr-at-eol

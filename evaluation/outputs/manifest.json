@@ -1,0 +1,60 @@
+{
+  "session_date": "2026-10-18",
+  "condition": "skill loaded; fresh context per generation agent; tasks grouped into 3 independent runs",
+  "skill_commit": "a388ad4b7c06c1288e9e71fd13eb7ad014274d83",
+  "model_id": null,
+  "reasoning_effort": null,
+  "model_identity_note": "Session settings were inherited; exact backend model ID, sampling parameters and reasoning setting were not exposed.",
+  "generation_agents": 3,
+  "source_format_note": "Published copies preserve content and normalize line endings to LF. Original files are retained locally.",
+  "outputs": [
+    {
+      "task": "T1",
+      "file": "evaluation/outputs/v1/T1.md",
+      "sha256": "8d79e8d0d5ec4b15e4fe36d8e4e2d05db547dce6cdfa18d2b3498fcb5362c5e8",
+      "original_sha256": "8d79e8d0d5ec4b15e4fe36d8e4e2d05db547dce6cdfa18d2b3498fcb5362c5e8"
+    },
+    {
+      "task": "T2",
+      "file": "evaluation/outputs/v1/T2.md",
+      "sha256": "0e077413e8599fe4cc633784b2602746932064fc58a4be41bc58e082b60b78b3",
+      "original_sha256": "0e077413e8599fe4cc633784b2602746932064fc58a4be41bc58e082b60b78b3"
+    },
+    {
+      "task": "T3",
+      "file": "evaluation/outputs/v1/T3.md",
+      "sha256": "1cbfb0a4e660097af05c4238ccef79d50fe76036ec51fdb638aefb43aa081d8f",
+      "original_sha256": "1cbfb0a4e660097af05c4238ccef79d50fe76036ec51fdb638aefb43aa081d8f"
+    },
+    {
+      "task": "T4",
+      "file": "evaluation/outputs/v1/T4.md",
+      "sha256": "06ab265a6a9e9d19a72c9b44ac992cf6d7d22326d73cdcea2a75106c2bfac283",
+      "original_sha256": "06ab265a6a9e9d19a72c9b44ac992cf6d7d22326d73cdcea2a75106c2bfac283"
+    },
+    {
+      "task": "T5",
+      "file": "evaluation/outputs/v1/T5.md",
+      "sha256": "1fc6ed48a7cdc738e7007b5221ab3d4e45cebbd5882e1b09ecc5c73d85fdef5c",
+      "original_sha256": "1fc6ed48a7cdc738e7007b5221ab3d4e45cebbd5882e1b09ecc5c73d85fdef5c"
+    },
+    {
+      "task": "T6-round1",
+      "file": "evaluation/outputs/v1/T6-round1.md",
+      "sha256": "5bb08a512afc0facf2d75afd08ea0d05b333e3575c87770fbc249c09503270f8",
+      "original_sha256": "5bb08a512afc0facf2d75afd08ea0d05b333e3575c87770fbc249c09503270f8"
+    },
+    {
+      "task": "T6-round2",
+      "file": "evaluation/outputs/v1/T6-round2.md",
+      "sha256": "c6bb0a625dad1dea9a257bbc8cee37d254b137301c8646acaadcff6b5f338d11",
+      "original_sha256": "c6bb0a625dad1dea9a257bbc8cee37d254b137301c8646acaadcff6b5f338d11"
+    },
+    {
+      "task": "T7",
+      "file": "evaluation/outputs/v1/T7.md",
+      "sha256": "a826d0ff5ac6481cef5e8210fb900188b3c8cbe1659b10f199e77feffe16aaee",
+      "original_sha256": "a826d0ff5ac6481cef5e8210fb900188b3c8cbe1659b10f199e77feffe16aaee"
+    }
+  ]
+}

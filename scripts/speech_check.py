@@ -3,31 +3,56 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import re
 from pathlib import Path
 
 CUE = re.compile(r"\[(停顿|演示|切换|互动)\s*(\d+(?:\.\d+)?)\s*秒\]")
 NOTE = re.compile(r"\[(?:画面|动作|提示)[：:][^\]\n]*\]")
 HEADING = re.compile(r"^\s{0,3}(#{1,6})\s+(.+?)\s*#*\s*$")
+FENCE = re.compile(r"^ {0,3}(`{3,}|~{3,})(.*)$")
+
+
+def advance_fence(line: str, opened: str | None) -> tuple[str | None, bool]:
+    match = FENCE.match(line)
+    if not match:
+        return opened, False
+    marker, suffix = match.groups()
+    if opened is None:
+        if marker[0] == "`" and "`" in suffix:
+            return None, False
+        return marker, True
+    if marker[0] == opened[0] and len(marker) >= len(opened) and not suffix.strip():
+        return None, True
+    return opened, False
+
+
+def without_editorial_notes(text: str) -> str:
+    text = re.sub(r"<!--[\s\S]*?-->", lambda match: "\n" * match.group(0).count("\n"), text)
+    lines = []
+    in_footnote = False
+    for line in text.splitlines():
+        if re.match(r"^ {0,3}\[\^[^\]]+\]:", line):
+            in_footnote = True
+            lines.append("")
+        elif in_footnote and (not line.strip() or line.startswith(("    ", "\t"))):
+            lines.append("")
+        else:
+            in_footnote = False
+            lines.append(line)
+    return "\n".join(lines)
 
 
 def select_lines(text: str, section: str | None) -> list[tuple[int, str]]:
-    lines = list(enumerate(text.splitlines(), 1))
+    lines = list(enumerate(without_editorial_notes(text).splitlines(), 1))
     if not section:
         return lines
     start = None
     level = None
-    in_fence = False
-    fence_char = ""
+    opened = None
     for index, (_, line) in enumerate(lines):
-        fence = re.match(r"^\s{0,3}(`{3,}|~{3,})", line)
-        if fence:
-            if not in_fence:
-                in_fence, fence_char = True, fence.group(1)[0]
-            elif fence.group(1)[0] == fence_char:
-                in_fence = False
-            continue
-        if in_fence:
+        opened, delimiter = advance_fence(line, opened)
+        if delimiter or opened:
             continue
         heading = HEADING.match(line)
         if heading:
@@ -46,25 +71,22 @@ def spoken_lines(text: str, section: str | None = None) -> tuple[list[tuple[int,
     result = []
     seconds = 0.0
     frontmatter = bool(lines and lines[0][0] == 1 and lines[0][1].strip() == "---")
-    in_fence = False
-    fence_char = ""
+    opened = None
     for line_no, line in lines:
         if frontmatter:
             if line_no > 1 and line.strip() == "---":
                 frontmatter = False
             continue
-        fence = re.match(r"^\s{0,3}(`{3,}|~{3,})", line)
-        if fence:
-            if not in_fence:
-                in_fence, fence_char = True, fence.group(1)[0]
-            elif fence.group(1)[0] == fence_char:
-                in_fence = False
+        opened, delimiter = advance_fence(line, opened)
+        if delimiter or opened or HEADING.match(line) or re.match(r"^\s*\|.*\|\s*$", line):
             continue
-        if in_fence or HEADING.match(line) or re.match(r"^\s*\|.*\|\s*$", line):
-            continue
-        seconds += sum(float(match.group(2)) for match in CUE.finditer(line))
+        durations = [float(match.group(2)) for match in CUE.finditer(line)]
+        if any(not math.isfinite(value) for value in durations):
+            raise ValueError("Stage duration must be finite")
+        seconds += sum(durations)
         line = CUE.sub("", line)
         line = NOTE.sub("", line)
+        line = re.sub(r"\[\^[^\]]+\]", "", line)
         line = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", line)
         line = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", line)
         line = re.sub(r"^\s*(?:[-*+]\s+|\d+[.)]\s+|>\s*)", "", line)
@@ -74,8 +96,8 @@ def spoken_lines(text: str, section: str | None = None) -> tuple[list[tuple[int,
 
 def inspect(text: str, section: str | None = None, cpm: float | None = None,
             forbid: tuple[str, ...] = (), patterns: tuple[str, ...] = ()) -> dict:
-    if cpm is not None and cpm <= 0:
-        raise ValueError("CPM must be positive")
+    if cpm is not None and (not math.isfinite(cpm) or cpm <= 0):
+        raise ValueError("CPM must be finite and positive")
     lines, fixed_seconds = spoken_lines(text, section)
     spoken = "\n".join(line for _, line in lines)
     han = len(re.findall(r"[\u3400-\u4dbf\u4e00-\u9fff]", spoken))
@@ -95,7 +117,7 @@ def inspect(text: str, section: str | None = None, cpm: float | None = None,
               "user_constraint_hits": hits,
               "quality_assessment": "requires source checking, listening and rehearsal"}
     if cpm is not None:
-        result["time_estimate"] = {"calibrated_characters_per_minute": cpm,
+        result["time_estimate"] = {"provided_characters_per_minute": cpm,
                                    "spoken_seconds": round(60 * count / cpm, 1),
                                    "total_seconds": round(60 * count / cpm + fixed_seconds, 1),
                                    "status": "estimate; measured delivery takes precedence"}

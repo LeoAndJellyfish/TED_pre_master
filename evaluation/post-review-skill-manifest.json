@@ -1,0 +1,16 @@
+{
+  "frozen_on": "2026-10-18",
+  "purpose": "post-review skill snapshot for forward evaluation",
+  "files": {
+    "LICENSE": "73069e2b170d1abe885f86c5a69b1a32ea0de9806965c485756136d675be10d1",
+    "SKILL.md": "0e267ce843e0f38b958d25bcab03119966da3cc67d1c01f84cfc88d9c43421cc",
+    "agents/openai.yaml": "a01967a5a1f468b4c8014c90d010366bd6a4abdf81d7cd6ce9b6fc3da3a1a806",
+    "references/architecture.md": "c069752ac30ba3803c6af7e9027db56c704a543b4365d392b8fc3cb033db44d7",
+    "references/facts-and-rehearsal.md": "71ec81b0d057de12223a851085632e25a0eedcd0afea45eeb8104e685d4f5820",
+    "references/spoken-chinese.md": "d3f41f011ec787e43190b62ded31c5830b653ed425fc3649a2f6fe066a61fe8c",
+    "references/ted-evidence.md": "14d48f997dcdf61f36a2c75654c5f58ccb871e27034c601cea1cb84f9b1856dc",
+    "scripts/speech_check.py": "3f7b625019cedc992d597c9af06050cea9f4772fcbb9613968f7150f6a9c837f"
+  },
+  "forward_cases_sha256": "ef5d6e3bff06b30d5962f073d9694cd71bba1a71d10d5464ab9418112b3fc241",
+  "generation_note": "The skill author has not read forward prompts before freezing this snapshot."
+}

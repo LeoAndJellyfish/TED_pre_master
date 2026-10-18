@@ -1,0 +1,444 @@
+{
+  "review_id": "forward-ordered-review",
+  "model": null,
+  "stage": 2,
+  "stage2_completed_at_utc": "2026-10-18T12:39:41.1240630Z",
+  "protocol": {
+    "order": [
+      "先阅读两份讲稿的口述正文，稿后说明及主要修订均在呈现前截断。",
+      "完成两稿观点、机制、数字、声线与理解卡点的独立回忆并保存 forward-first-read.json。",
+      "阶段1保存后读取 cases.json、judge-notes.md及两份完整讲稿。",
+      "对照阶段1实际回忆与任务要求，完成本评阅。"
+    ],
+    "first_read_evidence": {
+      "file": "evaluation/reviews/forward/first-read.json",
+      "completed_at_utc": "2026-10-18T12:37:05.3052349Z",
+      "sha256": "82cc2147ddfc533f94b1b771feb1bf5d26c6c3555a9bd599de79e30318abe26c",
+      "hash_rechecked_before_final_save": true,
+      "stage1_content_changed_after_reference_reading": false
+    },
+    "sources_read_in_stage2": [
+      "evaluation/forward/cases.json",
+      "evaluation/forward/judge-notes.md",
+      "evaluation/outputs/forward/forward_01_evidence_and_spotlight.md",
+      "evaluation/outputs/forward/forward_02_revision_voice_and_delay.md"
+    ],
+    "other_reviews_read": false,
+    "skills_facts_or_generation_records_read_before_stage1_save": false,
+    "external_search_used": false,
+    "evidence_limit": "复述证据来自评阅者一次正文阅读；尚无目标听众真人复述及真人试讲记录。"
+  },
+  "scale": {
+    "range": "各维0—3；不计算总分。",
+    "anchors": {
+      "0": "缺失或关键错误",
+      "1": "明显缺陷",
+      "2": "可用，有具体修订点",
+      "3": "当前任务内充分"
+    },
+    "dimensions": {
+      "F": "事实：数字、单位、范围、归属、经历",
+      "R": "推理：必要前提、机制、因果及比较链",
+      "A": "听众：首次概念、例子、数字负荷、听觉可跟随性",
+      "V": "声线：身份、句群、口语与冗余",
+      "T": "时间：完整现场预算与估计依据；缺真人实测最高2",
+      "U": "任务：必讲内容、格式、保留句及明确约束"
+    }
+  },
+  "reviews": [
+    {
+      "task_id": "forward_01_evidence_and_spotlight",
+      "file": "forward_01_evidence_and_spotlight.md",
+      "outcome": "主结论、归因、捐赠价值及参与行动均成立。数字负荷与连续限定值得压缩，阶段1行动地点的回忆有遗漏。",
+      "scores": {
+        "F": {
+          "score": 3,
+          "evidence": [
+            {
+              "lines": "23",
+              "quote": "每平方米少二十四升，正好是原来用水量的五分之一。",
+              "finding": "120与96的差值和20%降幅正确；单位、八周累计范围明确。"
+            },
+            {
+              "lines": "27",
+              "quote": "单独增加屏幕的绿地，用水量从一百二十升到一百一十七升，减少百分之二点五。",
+              "finding": "单屏117及2.5%正确；组合94较120少约22%的舍入也正确。"
+            },
+            {
+              "lines": "31",
+              "quote": "我们今年汇报的依据，是这座公园、这八周的记录。",
+              "finding": "限制场地与时段；未声称统计显著、长期节水或全市效果。"
+            },
+            {
+              "lines": "35",
+              "quote": "每处各省多少水，试验没有单独计算。",
+              "finding": "维修记录与逐处效果分开；陈伯事件无新添引语和心理描写。"
+            }
+          ]
+        },
+        "R": {
+          "score": 3,
+          "evidence": [
+            {
+              "lines": "17-19",
+              "quote": "按照位置分成六组，每组四块，再随机安排四种维护方式",
+              "finding": "比较条件、位置分组、共同天气和原时间表均进入正文，屏幕未接入自动调水也已交代。"
+            },
+            {
+              "lines": "33",
+              "quote": "每周巡检、记录位置和及时修补，这套流程取得了五分之一的平均节水幅度。",
+              "finding": "明确纠正原宣传句的归因，主比较落在完整巡检修补流程。"
+            },
+            {
+              "lines": "35",
+              "quote": "每周检查、记录和及时修补也是一整套安排，现有结果评价的是这套安排的整体表现。",
+              "finding": "避免拆分三个步骤的独立贡献；2升额外差异的稳定性另在第31行说明。"
+            }
+          ]
+        },
+        "A": {
+          "score": 2,
+          "evidence": [
+            {
+              "lines": "11-13",
+              "quote": "陈伯走到管线旁边，维修员随后接上，这个问题才得到处理。",
+              "finding": "具体场景承担发现、记录与维修交接的解释，首次阅读可复述。"
+            },
+            {
+              "lines": "23-39",
+              "quote": "原有维护的绿地，八周平均每平方米用了一百二十升水。",
+              "finding": "此后连续出现96、24、117、2.5%、94、22%、2升、6块、12块、9块、14处、91%及92%；无幻灯片场景下超出少量关键数字的理想负荷。"
+            },
+            {
+              "lines": "43-47",
+              "quote": "每周六上午九点，在云杉公园东门集合。",
+              "finding": "正文提供完整行动信息，阶段1实际回忆未留下东门。结尾再次强调集合时间与地点有助于提取。"
+            }
+          ],
+          "suggested_revision": "保留120→96及五分之一为主数字链；屏幕差异采用简短对照，删减维修数量或覆盖率的次要读数。结尾复现“周六九点、东门、查看管线并记录位置”。"
+        },
+        "V": {
+          "score": 2,
+          "evidence": [
+            {
+              "lines": "5与33",
+              "quote": "原先我想讲：“这块屏幕帮我们省下了五分之一的水。”",
+              "finding": "负责人由原先亮点转向试验结果，身份及认识变化自然，企业感谢有事实功能。"
+            },
+            {
+              "lines": "31-39",
+              "quote": "现有资料没有各块绿地完整的数据和波动情况。",
+              "finding": "波动情况、步骤整体效果、单漏点水量、长期植物健康的限定集中出现，研究汇报语气偏重。"
+            }
+          ],
+          "suggested_revision": "合并资料边界的句群，优先留下八周本园、流程整体、组合额外差异待核查三层信息，减轻连续解释。"
+        },
+        "T": {
+          "score": 2,
+          "evidence": [
+            {
+              "lines": "51",
+              "quote": "时长约七分钟，为估算，含停顿，尚未实测。",
+              "finding": "明确声明估算，缺真人试讲，最高计2。"
+            }
+          ],
+          "text_budget": {
+            "counting_method": "排除标题、稿后说明及方括号舞台指示，仅统计口述正文的汉字。",
+            "spoken_han_characters": 1351,
+            "explicit_pause_seconds": 4,
+            "target_seconds": 420,
+            "implied_rate_han_characters_per_minute": 195,
+            "estimate_status": "约195汉字/分钟可对应目标总时长。指向模型、呼吸和数字理解停顿未获得实测预算。"
+          },
+          "suggested_revision": "按现场条件完整试讲一次，计入指向屏幕及数字段落停顿，再确定删减。"
+        },
+        "U": {
+          "score": 2,
+          "evidence": [
+            {
+              "lines": "33",
+              "quote": "现在，我更愿意向大家讲清楚",
+              "finding": "认识转折清楚，原有错误宣传句以待修正的原先想法出现，随即给出准确新表述。"
+            },
+            {
+              "lines": "41-47",
+              "quote": "今天讲完，请愿意参加的居民到现场服务台，留下姓名，选定一个周次。",
+              "finding": "屏幕既有价值、下一年继续使用、四周巡检及即时报名动作均齐备；居民查看与记录、维修员修补的分工正确。"
+            },
+            {
+              "lines": "51",
+              "quote": "合成试讲。",
+              "finding": "稿后说明标识合成，含标点75字，低于120字上限。"
+            },
+            {
+              "lines": "23-39",
+              "quote": "原有维护和单独加屏幕的绿地，绿色覆盖率都是百分之九十一；加入巡检修补的两组，都是百分之九十二。",
+              "finding": "四组用水均值及覆盖率结果均口述，少量关键数字这一明确偏好执行不足。"
+            }
+          ],
+          "suggested_revision": "减少次要数字的口述，保留清楚区分屏幕、巡检修补和组合所需的对照信息。"
+        }
+      },
+      "listener_recall_audit": [
+        {
+          "question": "试点中，哪项具体做法与主要的节水差异相联系？你会怎样说明屏幕在其中的作用？",
+          "stage1_recalled": "每周巡检、记录漏点和及时修补的整体流程对应约五分之一节水；屏幕展示及留存信息，单独降幅较小。",
+          "stage1_missing": [
+            "发现后二十四小时内修补这一具体时间要求"
+          ],
+          "comparison": "核心归因和屏幕作用已自主复述；流程时限未进入阶段1回忆。",
+          "body_answer_evidence": {
+            "lines": "23与33",
+            "quote": "增加每周巡检、记录漏点、发现后二十四小时内修补的绿地，用了九十六升。"
+          },
+          "assessment": "核心复述达标，流程细节部分遗漏。"
+        },
+        {
+          "question": "如果你愿意参加下一步工作，你应在什么时间、到哪里集合，现场主要做什么？",
+          "stage1_recalled": "连续四周、周六九点、每次四十分钟、每队四人；沿管线检查、记录位置并交接维修，讲完服务台登记姓名和周次。",
+          "stage1_missing": [
+            "云杉公园东门这一具体集合点"
+          ],
+          "comparison": "时间、行动分工与登记进入阶段1回忆，地点未记录。上述现场动作来自阶段1所记的巡检处置链，阶段1未另列居民动作答复。",
+          "body_answer_evidence": {
+            "lines": "43-47",
+            "quote": "每周六上午九点，在云杉公园东门集合。"
+          },
+          "assessment": "首次阅读行动复述部分达标；正文信息齐备，可加强结尾提取线索。"
+        }
+      ],
+      "serious_issues": [],
+      "has_prepublication_required_changes": false,
+      "prepublication_required_changes": [],
+      "optional_revision_priorities": [
+        "压缩次要数字",
+        "合并连续资料限定",
+        "结尾重提集合时间与地点"
+      ],
+      "note": "真人试讲及目标听众复述尚待进行，现有结论为文本评阅。",
+      "input_file": "evaluation/outputs/forward/forward_01_evidence_and_spotlight.md",
+      "input_sha256": "0b228531f9b639f6c74193308825232757eee7b4ee25297627db7f7c6c90542a"
+    },
+    {
+      "task_id": "forward_02_revision_voice_and_delay",
+      "file": "forward_02_revision_voice_and_delay.md",
+      "outcome": "两段超温机制、提高读取频率的对照及提前断电计算均可从正文独立理解。指定句和旧稿声线保留充分；两个8秒与迁移边界值得重点进行听众复述核验。",
+      "scores": {
+        "F": {
+          "score": 3,
+          "evidence": [
+            {
+              "lines": "11-17",
+              "quote": "程序收到四十度，随即切断加热。此刻，箱内参考温度已经是四十三点四度。",
+              "finding": "第60秒读40及参考43.4、第68秒峰值45.6均与材料一致。"
+            },
+            {
+              "lines": "21-23",
+              "quote": "探头和后面的平滑处理链路，合起来晚了八秒。",
+              "finding": "稳态校准精度与动态8秒延迟分开，延迟来源正确。"
+            },
+            {
+              "lines": "51-57",
+              "quote": "程序估计箱内已经约三十八点八度。再加预计余热升高的一点二度，预计会到四十度",
+              "finding": "37.5为旧读数、约38.8为当前估计、40为含余热预测，含义与舍入均正确；37.5限于该次录像。"
+            },
+            {
+              "lines": "59",
+              "quote": "刚才两段录像，各来自其中一次。",
+              "finding": "十次峰值范围、装置及条件范围准确，无新增算法或行业结论。"
+            }
+          ]
+        },
+        "R": {
+          "score": 3,
+          "evidence": [
+            {
+              "lines": "29",
+              "quote": "箱内已经过了四十的时候，旧读数还没到四十，程序仍在加热。",
+              "finding": "明确解释断电前的信息迟到如何延长加热。"
+            },
+            {
+              "lines": "35-37",
+              "quote": "读数晚八秒，和铝板继续放热约八秒，是两个过程。",
+              "finding": "断电后的升温落在铝内衬放热，且两段过程可以同时存在。"
+            },
+            {
+              "lines": "41",
+              "quote": "程序更频繁地查看读数，读到的仍是八秒前的温度。",
+              "finding": "读取频率对照的因果作用明确，旧稿第二处错误得到修正。"
+            },
+            {
+              "lines": "45-51",
+              "quote": "再加预计余热升高的一点二度，预计会到四十度，于是提前停了。",
+              "finding": "趋势外推、装置标定余热、预估峰值及提前断电的决策链完整，脱离屏幕仍能复述。"
+            }
+          ]
+        },
+        "A": {
+          "score": 2,
+          "evidence": [
+            {
+              "lines": "27-37",
+              "quote": "断电前这一段，问题出在信息晚到。",
+              "finding": "按断电时刻分段，补足两个8秒各自的来源；阶段1可独立复述。"
+            },
+            {
+              "lines": "45-59",
+              "quote": "改进程序先看最近六秒收到的读数，估计升温速度。",
+              "finding": "六秒趋势、八秒外推、五次标定、1.2度、三组温度以及重复区间连续出现。核心37.5→38.8→40链清楚，背景数字仍有压缩空间。"
+            },
+            {
+              "lines": "57",
+              "quote": "换厚一些的内衬，调整加热功率，或者室温改变，升温和余热的记录就要重新检查。",
+              "finding": "条件变化的边界在正文明确，阶段1回忆未留下这一信息。"
+            }
+          ],
+          "suggested_revision": "收紧五次标定及两组重复区间的数字口述；在结尾用短句重提装置变化后重新查看升温和余热记录，保留三组核心温度。"
+        },
+        "V": {
+          "score": 3,
+          "evidence": [
+            {
+              "lines": "19与25",
+              "quote": "我在维修台前，最容易着急的就是这几秒。手已经停了，眼睛还盯着读数。",
+              "finding": "旧稿的维修动作、第一人称和短句保留，新增机制接续已有观察。"
+            },
+            {
+              "lines": "33与61-67",
+              "quote": "手从开关上拿开，热还没停。",
+              "finding": "原有停顿、方框、等待及记录声线保持；第65行新增技术回扣，未泛化为人生训诫。"
+            }
+          ]
+        },
+        "T": {
+          "score": 2,
+          "evidence": [
+            {
+              "lines": "71",
+              "quote": "约六分钟，含八秒录像及停顿，为估算，尚未实测。",
+              "finding": "时间声明透明，缺真人试讲，最高计2。"
+            }
+          ],
+          "text_budget": {
+            "counting_method": "排除标题、主要修订及方括号舞台指示，仅统计口述正文的汉字。",
+            "spoken_han_characters": 1278,
+            "explicit_video_seconds": 8,
+            "explicit_pause_seconds": 2,
+            "target_seconds": 360,
+            "implied_rate_han_characters_per_minute": 219,
+            "estimate_status": "约219汉字/分钟对应目标总时长。按220汉字/分钟计算约5分59秒，留给未标注指向和额外解释的余量较少；该推算尚无真人证据。"
+          },
+          "suggested_revision": "完整计入录像启停及曲线指向试讲，优先压缩背景数字，为机制关键句留停顿。"
+        },
+        "U": {
+          "score": 3,
+          "evidence": [
+            {
+              "lines": "3",
+              "quote": "今天先请各位陪我等八秒。",
+              "finding": "指定开头逐字保留。"
+            },
+            {
+              "lines": "33",
+              "quote": "手从开关上拿开，热还没停。",
+              "finding": "指定中间句逐字保留。"
+            },
+            {
+              "lines": "67",
+              "quote": "维修结束前，我会再等一会儿。今天也一样。",
+              "finding": "指定结尾逐字保留。"
+            },
+            {
+              "lines": "7、21-59与61-67",
+              "quote": "桌上的模型没有通电。今天看的是预先录好的升温过程。",
+              "finding": "模型及录像条件、两处错误的直接修正、旧稿叙述顺序与记录收尾均落实；保留原探头和读取间隔，新增内容服务于机制。"
+            },
+            {
+              "lines": "71",
+              "quote": "合成试讲。",
+              "finding": "修订说明标识合成，含标点95字，低于150字上限。"
+            }
+          ]
+        }
+      },
+      "protected_sentence_checks": [
+        {
+          "type": "opening",
+          "exact_match": true,
+          "lines": "3",
+          "sentence": "今天先请各位陪我等八秒。"
+        },
+        {
+          "type": "middle",
+          "exact_match": true,
+          "lines": "33",
+          "sentence": "手从开关上拿开，热还没停。"
+        },
+        {
+          "type": "closing",
+          "exact_match": true,
+          "lines": "67",
+          "sentence": "维修结束前，我会再等一会儿。今天也一样。"
+        }
+      ],
+      "listener_recall_audit": [
+        {
+          "question": "旧程序收到四十度后已经断电，箱内为什么还会继续升温？断电前的信息延迟与断电后的余热分别发生了什么？",
+          "stage1_recalled": "旧读数来自8秒前，箱内越过40后程序仍加热；断电后已热铝内衬继续放热约8秒，温度继续升至45.6。两个过程可以同时发生。",
+          "stage1_missing": [],
+          "comparison": "两段原因、分段时点与延迟来源均在阶段1自主复述中出现。",
+          "body_answer_evidence": {
+            "lines": "29与35-37",
+            "quote": "断电后这一段，温度继续上升的原因在这里。"
+          },
+          "assessment": "首次阅读机制复述达标。"
+        },
+        {
+          "question": "改进程序为什么在读数三十七点五度时就停了？如果换一只内衬更厚的箱子，你还会照搬这个数字吗，理由是什么？",
+          "stage1_recalled": "根据近期升温趋势补偿8秒延迟，37.5推估当前38.8，再加标定所得余热1.2，预计到40而提前断电。",
+          "stage1_missing": [
+            "更厚内衬等装置条件改变后重新检查记录",
+            "37.5仅为单次录像切断读数的明确边界"
+          ],
+          "comparison": "提前行动的数值与因果链已自主复述；第二问的迁移边界未进入阶段1回忆。阶段2读取第57行后才明确核对该边界。",
+          "body_answer_evidence": {
+            "lines": "51与57",
+            "quote": "三十七点五，是这段录像里的切断读数。"
+          },
+          "assessment": "机制部分达标，迁移部分的首次回忆遗漏。"
+        }
+      ],
+      "stage1_observation_reassessment": [
+        {
+          "stage1_observation": "第39行“忙，和及时，是两件事”略有概括口吻。",
+          "reference_check": "该句出自旧稿，用户要求其他无事实冲突句尽量沿用。",
+          "final_assessment": "视为保留原声线的证据，未列为新增口号问题。"
+        },
+        {
+          "stage1_observation": "结尾“等待”与提前停热的语义衔接偏弱。",
+          "reference_check": "方框、等待及指定收尾来自旧稿；第65行新增“改进程序算上这两段，提前行动”。",
+          "final_assessment": "已有具体技术回扣，保留轻微听觉衔接观察，未列为发布前必改。"
+        }
+      ],
+      "serious_issues": [],
+      "has_prepublication_required_changes": false,
+      "prepublication_required_changes": [],
+      "optional_revision_priorities": [
+        "压缩背景数字以留停顿",
+        "收尾加强装置变化后的记录复核提示",
+        "核验两个8秒的真人听众复述"
+      ],
+      "note": "真人试讲及目标听众复述尚待进行，现有结论为文本评阅。",
+      "input_file": "evaluation/outputs/forward/forward_02_revision_voice_and_delay.md",
+      "input_sha256": "b217cd4e76d10b3a00ba000550f8f592496bb2d680cdd3b2d410c156369ba487"
+    }
+  ],
+  "overall_serious_issues": [],
+  "has_prepublication_required_changes": false,
+  "prepublication_required_changes": [],
+  "publication_readiness": "当前未发现必须先改的事实、机制或指定句问题。发布前建议完成真人时长与两条复述题的核验；文本证据尚未验证实际现场表现。",
+  "publication_record": {
+    "original_review_sha256": "20fd198c3d3100f821e4451460f0c9db8b57fa52e7c92b6a408281cfbbc25c3f",
+    "changes": "Source paths mapped to published repository paths; input file hashes added. Review content preserved."
+  }
+}

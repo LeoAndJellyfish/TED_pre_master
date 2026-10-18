@@ -28,7 +28,7 @@ cd TED_pre_master
 python scripts/install_skill.py
 ```
 
-默认安装到 `~/.codex/skills/ted-pre-master/`。也可用 `--dest` 指定目录。发布版ZIP内的 `ted-pre-master/` 同样可以解压到技能目录。
+默认安装到 `~/.codex/skills/ted-pre-master/`；设置 `CODEX_HOME` 时使用其下的 `skills/ted-pre-master/`。也可用 `--dest` 指定目录。发布版ZIP内的 `ted-pre-master/` 同样可以解压到技能目录。
 
 ## 内容
 
@@ -38,6 +38,7 @@ python scripts/install_skill.py
 - [中文口语编辑](references/spoken-chinese.md)：声线、具体动作、句群、节奏与原创改写。
 - [事实与排练](references/facts-and-rehearsal.md)：来源反查、数字归属、时间与现场检查。
 - [行为评测协议](evaluation/protocol.md)：真实性、推理、听众、声线、时间及任务约束。
+- [实际评测记录](evaluation/results.md)：首次输出、独立评阅、问题修订及新增任务检验。
 
 ## 排练检查
 

@@ -1,0 +1,1778 @@
+{
+  "review_version": "v2",
+  "review_date": "2026-10-18",
+  "reviewer": {
+    "id": "revision-recheck",
+    "actor_type": "AI",
+    "model": null
+  },
+  "generation": {
+    "actor_type": "AI",
+    "model": null
+  },
+  "method": {
+    "type": "独立定向AI复核",
+    "blind": false,
+    "procedure": "逐项读取冻结案例、八份v2正文及两份v1评阅；按任务定位初轮意见，重新核对当前事实与推理，并运行机械计数和分段预算核算。评分依据现稿证据。",
+    "inputs": [
+      "evaluation/cases.json",
+      "evaluation/outputs/v2",
+      "evaluation/reviews/v1/judge-1.json",
+      "evaluation/reviews/v1/judge-2.json",
+      "scripts/speech_check.py",
+      "evaluation/protocol.md"
+    ],
+    "scope": "公开开发案例；T6分两轮。未读取私人课堂稿或前向评测输出。"
+  },
+  "scoring": {
+    "scale": {
+      "0": "缺失或关键错误",
+      "1": "明显缺陷",
+      "2": "可用且仍有具体修订点",
+      "3": "当前任务内充分"
+    },
+    "dimensions": {
+      "F": "事实",
+      "R": "推理",
+      "A": "听众",
+      "V": "声线",
+      "T": "时间",
+      "U": "任务"
+    },
+    "time_score_cap": 2
+  },
+  "global_limitations": [
+    "生成者与本次评委均为AI；精确模型信息未提供，记录为null。",
+    "全部时长为文本与动作预算估算；未开展真人试读、现场计时或真人听众理解测试。",
+    "结果适用于本批开发案例，未设置无技能基线。"
+  ],
+  "entries": [
+    {
+      "id": "T1",
+      "task": "T1",
+      "file": "evaluation/outputs/v2/T1.md",
+      "input_sha256": "d6ebec93cfc5174351feaaff6fd6a7b382beae5cf1289816df1b0c7969877d2e",
+      "summary": "方法依次读取不同序列信息；重叠窗口采用同扫描的蒙特卡洛参照；Wald与Wilson通过不同波动构造说明样本条件对区间的影响。",
+      "checks": {
+        "F": {
+          "assessment": "加一结果及百分比换算准确；窗口、模拟和区间数字均与事实包一致。Wald零方差及Wilson端点的算术复核通过。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 77,
+              "quote": "得到的 p 值是零点零零三八，也就是百分之零点三八。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 93,
+              "quote": "通常形式的百分之九十五 Wald 区间是零到零，百分之九十五 Wilson 区间约为零到零点二七八。"
+            }
+          ]
+        },
+        "R": {
+          "assessment": "重叠依赖引出完整序列模拟；候选比例下重新计算波动，再按双侧5%门槛筛选，说明了Wilson构造与Wald代入样本比例的区别。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 69,
+              "quote": "模拟中的相邻窗口同样共享三个位置。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 105,
+              "quote": "偏离未超过门槛的候选比例得到保留，超过门槛的候选比例被排除。"
+            }
+          ]
+        },
+        "A": {
+          "assessment": "短序列给出三次滑窗；Wald零宽机制和检验门槛均在首次需要处解释，听众无需先验检验知识补句。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 99,
+              "quote": "波动估计中含有零乘以一，结果为零；区间左右加减的余量随之为零，宽度也就是零。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 105,
+              "quote": "“双侧”表示正面比预期多或少都纳入判断。"
+            }
+          ]
+        },
+        "V": {
+          "assessment": "此前两次长链回顾已经压缩，区间解释获得220秒；结尾保留两主题的具体方法依据，语气平实。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 85,
+              "quote": "这里的方法依据是窗口重叠。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 123,
+              "quote": "两部分共享的方法依据是：参照方式应适合数据结构与样本条件。"
+            }
+          ]
+        },
+        "T": {
+          "assessment": "机械计数3132字符；六段900秒，固定动作60秒，语速要求约224字符/分钟。分段要求约216—236，未见结尾陡增；真人计时待补。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 148,
+              "quote": "正文按工具计数口径共3132个可读字符；正文明确动作58秒，第6页切换另计2秒。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 150,
+              "quote": "尚未进行现场计时；15分钟为待试讲核对的估算。"
+            }
+          ]
+        },
+        "U": {
+          "assessment": "按抛硬币、区间估计次序展开，明确演示身份、四位预先指定及身份未知；画面建议恰为6页，未追加模拟或覆盖率结果。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 9,
+              "quote": "以下都是演示案例。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 83,
+              "quote": "这里的四位统计量已经预先指定，模拟校准针对这个统计量展开。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 127,
+              "quote": "## 附录：画面建议（共6页）"
+            }
+          ]
+        }
+      },
+      "scores": {
+        "F": 3,
+        "R": 3,
+        "A": 3,
+        "V": 3,
+        "T": 2,
+        "U": 3
+      },
+      "initial_issues": [
+        {
+          "source": "evaluation/reviews/v1/judge-1.json",
+          "task": "T1",
+          "issue_index": 0,
+          "dimension": "F",
+          "initial_diagnosis": "p=0.0038是0.38%的尾部比例；百分点用于两个百分率的差。此处没有比较基点，口头单位会混淆概率与比例差。数字、加一运算及随后尾部解释正确，因此属于可局部修正的问题。",
+          "status": "resolved",
+          "assessment": "0.0038按比例乘100为0.38%，当前口述百分比单位准确。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 77,
+              "quote": "也就是百分之零点三八。"
+            }
+          ]
+        },
+        {
+          "source": "evaluation/reviews/v1/judge-1.json",
+          "task": "T1",
+          "issue_index": 1,
+          "dimension": "T",
+          "initial_diagnosis": "预算自洽但公式、数字与逐步显示的现场耗时尚未实测；按规则T最高2。",
+          "status": "unresolved",
+          "assessment": "仍无真人试读、现场计时或听众反馈。现稿已准确标注估算状态；这项验证缺口持续存在，T记2。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 150,
+              "quote": "尚未进行现场计时；15分钟为待试讲核对的估算。"
+            }
+          ]
+        },
+        {
+          "source": "evaluation/reviews/v1/judge-2.json",
+          "task": "T1",
+          "issue_index": 0,
+          "dimension": "F/A",
+          "initial_diagnosis": "此处表达尾部频率，应使用百分比；百分点用于两个百分比之间的差，句中没有这样的差。",
+          "status": "resolved",
+          "assessment": "重复指出的百分点错误已修正；尾部频率与生成者身份保持区分。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 77,
+              "quote": "也就是百分之零点三八。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 81,
+              "quote": "生成者身份和主观意图，在这一组模拟中没有作为已知事实输入。"
+            }
+          ]
+        },
+        {
+          "source": "evaluation/reviews/v1/judge-2.json",
+          "task": "T1",
+          "issue_index": 1,
+          "dimension": "A",
+          "initial_diagnosis": "听众未学过检验，听到的是通过一项未解释的条件；Wald为何在零正面时收缩也没有机制说明。",
+          "status": "resolved",
+          "assessment": "正文明确样本比例导致Wald波动估计为零；Wilson按候选比例评价偏离，解释双侧5%门槛及保留条件。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 99,
+              "quote": "波动估计中含有零乘以一，结果为零；区间左右加减的余量随之为零，宽度也就是零。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 105,
+              "quote": "构造百分之九十五区间时，检验水平设为双侧百分之五"
+            },
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 105,
+              "quote": "偏离未超过门槛的候选比例得到保留，超过门槛的候选比例被排除。"
+            }
+          ]
+        },
+        {
+          "source": "evaluation/reviews/v1/judge-2.json",
+          "task": "T1",
+          "issue_index": 2,
+          "dimension": "V/T",
+          "initial_diagnosis": "两次长回顾重复同一链条，Wilson解释的时间相对偏紧。",
+          "status": "resolved",
+          "assessment": "中段长回顾压为两句；末节224字符、65秒含6秒动作，约228字符/分钟，区间解释安排220秒。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 85,
+              "quote": "这里的方法依据是窗口重叠。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 89,
+              "quote": "### 10:15—13:55｜从公平模型转向比例区间（计划）"
+            },
+            {
+              "file": "evaluation/outputs/v2/T1.md",
+              "line": 115,
+              "quote": "### 13:55—15:00｜回答方法选择的问题（计划）"
+            }
+          ]
+        }
+      ],
+      "timing": {
+        "method": "scripts/speech_check.py，正文按精确标题选择；每个汉字、ASCII数字及拉丁字母计一，排除标点、标题、附录及舞台提示。",
+        "section": "讲稿正文",
+        "spoken_characters": 3132,
+        "body_fixed_cue_seconds": 58.0,
+        "additional_fixed_seconds": 2,
+        "fixed_seconds_total": 60.0,
+        "total_budget_seconds": 900,
+        "available_spoken_seconds": 840.0,
+        "minimum_required_cpm": 223.71,
+        "human_rehearsal_performed": false,
+        "status": "estimate",
+        "sensitivity_estimates": [
+          {
+            "hypothetical_cpm": 200,
+            "estimated_total_seconds": 999.6
+          },
+          {
+            "hypothetical_cpm": 230,
+            "estimated_total_seconds": 877.0
+          },
+          {
+            "hypothetical_cpm": 260,
+            "estimated_total_seconds": 782.8
+          }
+        ],
+        "interpretation": "参数200、230、260用于敏感性计算，未指定为讲者实测速度；最低字符速度表示在既定预算内读完正文所需的平均值。数字、英文及公式的真实读法须在试讲中计时。",
+        "segments": [
+          {
+            "heading": "00:00—01:30｜从参照模型开始（计划）",
+            "budget_seconds": 90,
+            "spoken_characters": 310,
+            "fixed_seconds": 4.0,
+            "available_spoken_seconds": 86.0,
+            "minimum_required_cpm": 216.28
+          },
+          {
+            "heading": "01:30—04:00｜从总量逐步检查排列（计划）",
+            "budget_seconds": 150,
+            "spoken_characters": 541,
+            "fixed_seconds": 6.0,
+            "available_spoken_seconds": 144.0,
+            "minimum_required_cpm": 225.42
+          },
+          {
+            "heading": "04:00—07:15｜四位窗口如何形成统计量（计划）",
+            "budget_seconds": 195,
+            "spoken_characters": 642,
+            "fixed_seconds": 20.0,
+            "available_spoken_seconds": 175.0,
+            "minimum_required_cpm": 220.11
+          },
+          {
+            "heading": "07:15—10:15｜蒙特卡洛怎样保留数据结构（计划）",
+            "budget_seconds": 180,
+            "spoken_characters": 662,
+            "fixed_seconds": 12.0,
+            "available_spoken_seconds": 168.0,
+            "minimum_required_cpm": 236.43
+          },
+          {
+            "heading": "10:15—13:55｜从公平模型转向比例区间（计划）",
+            "budget_seconds": 220,
+            "spoken_characters": 753,
+            "fixed_seconds": 12.0,
+            "available_spoken_seconds": 208.0,
+            "minimum_required_cpm": 217.21
+          },
+          {
+            "heading": "13:55—15:00｜回答方法选择的问题（计划）",
+            "budget_seconds": 65,
+            "spoken_characters": 224,
+            "fixed_seconds": 6.0,
+            "available_spoken_seconds": 59.0,
+            "minimum_required_cpm": 227.8
+          }
+        ]
+      },
+      "critical_failures": [],
+      "new_issues": [],
+      "must_fix_before_publication": [],
+      "recommendation": "可纳入公开开发诊断材料，并保留估算时长与AI评阅来源说明；正式发言前完成真人计时试讲。"
+    },
+    {
+      "id": "T2",
+      "task": "T2",
+      "file": "evaluation/outputs/v2/T2.md",
+      "input_sha256": "0e077413e8599fe4cc633784b2602746932064fc58a4be41bc58e082b60b78b3",
+      "summary": "2023年综述未给出明确的短期主观视疲劳减轻效果；感受、过滤机制及各临床结局分别按相应证据判断。",
+      "checks": {
+        "F": {
+          "assessment": "与v1字节相同；对照2023年原始综述，检索截止、样本范围、随访、主观视疲劳确定性、睡眠与未测结局均一致。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T2.md",
+              "line": 9,
+              "quote": "它的电子检索截止于2022年3月22日。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T2.md",
+              "line": 23,
+              "quote": "相关试验没有显示明确的组间减轻效果，证据确定性较低。"
+            }
+          ]
+        },
+        "R": {
+          "assessment": "感受、过滤机制与临床结局逐层对应；主观结局也按记录与比较方式评价，证据状态未混同。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T2.md",
+              "line": 15,
+              "quote": "过滤作用提供了一个可以检验的解释，临床效果要看人的结果。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T2.md",
+              "line": 33,
+              "quote": "它与“已经测量，结果未见明确差异”是两种情况。"
+            }
+          ]
+        },
+        "A": {
+          "assessment": "随机分配与证据确定性有就近解释；总试验数和具体结局试验数分开。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T2.md",
+              "line": 21,
+              "quote": "随机分配有助于减少两组原有差异的影响。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T2.md",
+              "line": 29,
+              "quote": "研究总数和某个结局拥有多少证据，需要分别看。"
+            }
+          ]
+        },
+        "V": {
+          "assessment": "从校园常见感受进入具体证据问题，结尾回到比较对象与结局，表达克制。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T2.md",
+              "line": 7,
+              "quote": "镜片减少了某部分光线之后，使用者的眼疲劳，究竟有没有相应减轻？"
+            },
+            {
+              "file": "evaluation/outputs/v2/T2.md",
+              "line": 41,
+              "quote": "对什么人，在多长时间里，与什么比较，改善了哪一个结局。"
+            }
+          ]
+        },
+        "T": {
+          "assessment": "计数1298、固定停顿10秒，与附录一致；分项45+130+85+65+35=360秒。实际朗读与数字读法待计时。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T2.md",
+              "line": 45,
+              "quote": "正文讲述计划约5分50秒，明确停顿共10秒"
+            },
+            {
+              "file": "evaluation/outputs/v2/T2.md",
+              "line": 45,
+              "quote": "未进行真人试读或完整现场计时。"
+            }
+          ]
+        },
+        "U": {
+          "assessment": "保留2023年历史截面，未引入购物建议、个人体验或2026年最新研究宣称。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T2.md",
+              "line": 9,
+              "quote": "这里呈现的是2023年的证据截面。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T2.md",
+              "line": 47,
+              "quote": "未检索或据此宣称2026年最新研究状态。"
+            }
+          ]
+        }
+      },
+      "scores": {
+        "F": 3,
+        "R": 3,
+        "A": 3,
+        "V": 3,
+        "T": 2,
+        "U": 3
+      },
+      "initial_issues": [
+        {
+          "source": "evaluation/reviews/v1/judge-1.json",
+          "task": "T2",
+          "issue_index": 0,
+          "dimension": "T",
+          "initial_diagnosis": "6分钟预算具有篇幅与停顿安排，但实际口头时长尚未验证；按本轮规则T最高2。",
+          "status": "unresolved",
+          "assessment": "仍无真人试读、现场计时或听众反馈。现稿已准确标注估算状态；这项验证缺口持续存在，T记2。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T2.md",
+              "line": 45,
+              "quote": "未进行真人试读或完整现场计时。"
+            }
+          ]
+        }
+      ],
+      "timing": {
+        "method": "scripts/speech_check.py，正文按精确标题选择；每个汉字、ASCII数字及拉丁字母计一，排除标点、标题、附录及舞台提示。",
+        "section": "讲稿正文",
+        "spoken_characters": 1298,
+        "body_fixed_cue_seconds": 10.0,
+        "additional_fixed_seconds": 0,
+        "fixed_seconds_total": 10.0,
+        "total_budget_seconds": 360,
+        "available_spoken_seconds": 350.0,
+        "minimum_required_cpm": 222.51,
+        "human_rehearsal_performed": false,
+        "status": "estimate",
+        "sensitivity_estimates": [
+          {
+            "hypothetical_cpm": 200,
+            "estimated_total_seconds": 399.4
+          },
+          {
+            "hypothetical_cpm": 230,
+            "estimated_total_seconds": 348.6
+          },
+          {
+            "hypothetical_cpm": 260,
+            "estimated_total_seconds": 309.5
+          }
+        ],
+        "interpretation": "参数200、230、260用于敏感性计算，未指定为讲者实测速度；最低字符速度表示在既定预算内读完正文所需的平均值。数字、英文及公式的真实读法须在试讲中计时。",
+        "appendix_segment_budgets_seconds": [
+          45,
+          130,
+          85,
+          65,
+          35
+        ]
+      },
+      "critical_failures": [],
+      "new_issues": [],
+      "must_fix_before_publication": [],
+      "recommendation": "可纳入公开开发诊断材料，并保留估算时长与AI评阅来源说明；正式发言前完成真人计时试讲。",
+      "preservation_check": {
+        "byte_identical_to_v1": true,
+        "v1_sha256": "0e077413e8599fe4cc633784b2602746932064fc58a4be41bc58e082b60b78b3",
+        "v2_sha256": "0e077413e8599fe4cc633784b2602746932064fc58a4be41bc58e082b60b78b3"
+      },
+      "source_recheck": {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10436683/",
+        "sections": [
+          "Abstract: Search methods, Main results",
+          "Summary of findings 1: visual fatigue, subjective sleep scores and notes",
+          "Description of the intervention"
+        ],
+        "assessment": "2023年历史来源中的试验数量、样本范围、随访及结局证据状态与现稿对应；过滤机制及黄斑定位说明未扩大疗效主张。"
+      }
+    },
+    {
+      "id": "T3",
+      "task": "T3",
+      "file": "evaluation/outputs/v2/T3.md",
+      "input_sha256": "a4344ad26cfde6dcc3551e39082097696facdf7d228a8c00879076ad212ddcc9",
+      "summary": "超时后处理状态可能未知；同一业务在账户及保留期范围内复用键与内容，并由服务器原子占用和保存状态。",
+      "checks": {
+        "F": {
+          "assessment": "十秒、账户加键、24小时、同键异内容拒绝、原子占用与状态记录均符合规格；新增金额有明确演示标识。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T3.md",
+              "line": 32,
+              "quote": "金额也仅为演示：第一次请求是一百元，使用键 A。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T3.md",
+              "line": 34,
+              "quote": "如果重试仍用键 A，金额却改成一百二十元，服务器会拒绝这项请求。"
+            }
+          ]
+        },
+        "R": {
+          "assessment": "未收到回复与支付状态未知的连接明确；换键的新请求及并发抢占解释支撑重复扣款路径。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T3.md",
+              "line": 11,
+              "quote": "如果回复在途中丢失，用户就会看到超时，尽管支付已经处理。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T3.md",
+              "line": 38,
+              "quote": "如果它们各自先查记录，随后各自开始处理，就可能在彼此看见记录之前进入重复流程。"
+            }
+          ]
+        },
+        "A": {
+          "assessment": "客户端、服务器、幂等键与原子含义有直白解释；100元改120元使拒绝条件具体可辨。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T3.md",
+              "line": 20,
+              "quote": "可以理解为请求携带的识别标记。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T3.md",
+              "line": 40,
+              "quote": "检查与占用作为一个完整步骤完成"
+            }
+          ]
+        },
+        "V": {
+          "assessment": "末节由三段职责盘点缩为两段产品流程判断；例子承担了内容变化的解释作用，连读顺序清楚。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T3.md",
+              "line": 62,
+              "quote": "超时后的重试，先要确认仍是同一笔业务，再沿用原键与原内容。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T3.md",
+              "line": 64,
+              "quote": "评审时还应确认：记录是否仍在二十四小时保留期内，最终支付状态如何向用户呈现。"
+            }
+          ]
+        },
+        "T": {
+          "assessment": "计数1277、固定30秒，五段合计360秒；结尾119字符扣4秒后约174字符/分钟，初轮约306的局部拥挤已消除；实际时长待试讲。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T3.md",
+              "line": 80,
+              "quote": "末段119个可读字符，扣除4秒停顿后所需速度约174个可读字符／分钟。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T3.md",
+              "line": 82,
+              "quote": "尚未进行现场计时；6分钟为待试讲核对的估算。"
+            }
+          ]
+        },
+        "U": {
+          "assessment": "保持非技术说明、明确假设操作及保证范围；未加入个人经历、虚构对话或跨系统无限期保证。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T3.md",
+              "line": 9,
+              "quote": "先看一次假设操作。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T3.md",
+              "line": 56,
+              "quote": "跨系统、无限期的唯一支付保证，材料中没有提供。"
+            }
+          ]
+        }
+      },
+      "scores": {
+        "F": 3,
+        "R": 3,
+        "A": 3,
+        "V": 3,
+        "T": 2,
+        "U": 3
+      },
+      "initial_issues": [
+        {
+          "source": "evaluation/reviews/v1/judge-1.json",
+          "task": "T3",
+          "issue_index": 0,
+          "dimension": "T",
+          "initial_diagnosis": "动作预算与所需语速可检查，6分钟实际完成情况尚无实测；按规则T最高2。",
+          "status": "unresolved",
+          "assessment": "仍无真人试读、现场计时或听众反馈。现稿已准确标注估算状态；这项验证缺口持续存在，T记2。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T3.md",
+              "line": 82,
+              "quote": "尚未进行现场计时；6分钟为待试讲核对的估算。"
+            }
+          ]
+        },
+        {
+          "source": "evaluation/reviews/v1/judge-2.json",
+          "task": "T3",
+          "issue_index": 0,
+          "dimension": "V",
+          "initial_diagnosis": "这里名为例子，实际仍在复述规则；听众尚未看到何种变化会触发拒绝。",
+          "status": "resolved",
+          "assessment": "同一次假设付款给出100元/120元及键A的具体差异，并直述拒绝结果。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T3.md",
+              "line": 32,
+              "quote": "第一次请求是一百元，使用键 A。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T3.md",
+              "line": 34,
+              "quote": "如果重试仍用键 A，金额却改成一百二十元，服务器会拒绝这项请求。"
+            }
+          ]
+        },
+        {
+          "source": "evaluation/reviews/v1/judge-2.json",
+          "task": "T3",
+          "issue_index": 1,
+          "dimension": "T",
+          "initial_diagnosis": "末节计划语速约306字符/分钟，核心清单在结尾拥挤。",
+          "status": "resolved",
+          "assessment": "末段压为119字符，扣4秒停顿后约174字符/分钟；24小时与状态呈现保留，原局部拥挤已解除。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T3.md",
+              "line": 80,
+              "quote": "末段119个可读字符，扣除4秒停顿后所需速度约174个可读字符／分钟。"
+            }
+          ]
+        }
+      ],
+      "timing": {
+        "method": "scripts/speech_check.py，正文按精确标题选择；每个汉字、ASCII数字及拉丁字母计一，排除标点、标题、附录及舞台提示。",
+        "section": "讲稿正文",
+        "spoken_characters": 1277,
+        "body_fixed_cue_seconds": 30.0,
+        "additional_fixed_seconds": 0,
+        "fixed_seconds_total": 30.0,
+        "total_budget_seconds": 360,
+        "available_spoken_seconds": 330.0,
+        "minimum_required_cpm": 232.18,
+        "human_rehearsal_performed": false,
+        "status": "estimate",
+        "sensitivity_estimates": [
+          {
+            "hypothetical_cpm": 200,
+            "estimated_total_seconds": 413.1
+          },
+          {
+            "hypothetical_cpm": 230,
+            "estimated_total_seconds": 363.1
+          },
+          {
+            "hypothetical_cpm": 260,
+            "estimated_total_seconds": 324.7
+          }
+        ],
+        "interpretation": "参数200、230、260用于敏感性计算，未指定为讲者实测速度；最低字符速度表示在既定预算内读完正文所需的平均值。数字、英文及公式的真实读法须在试讲中计时。",
+        "segments": [
+          {
+            "heading": "00:00—01:10｜超时以后，哪些信息仍然未知（计划）",
+            "budget_seconds": 70,
+            "spoken_characters": 249,
+            "fixed_seconds": 10.0,
+            "available_spoken_seconds": 60.0,
+            "minimum_required_cpm": 249.0
+          },
+          {
+            "heading": "01:10—02:15｜重试怎样识别同一笔业务（计划）",
+            "budget_seconds": 65,
+            "spoken_characters": 254,
+            "fixed_seconds": 4.0,
+            "available_spoken_seconds": 61.0,
+            "minimum_required_cpm": 249.84
+          },
+          {
+            "heading": "02:15—04:00｜同一个键还须配合同样的内容（计划）",
+            "budget_seconds": 105,
+            "spoken_characters": 379,
+            "fixed_seconds": 8.0,
+            "available_spoken_seconds": 97.0,
+            "minimum_required_cpm": 234.43
+          },
+          {
+            "heading": "04:00—05:15｜换键与过期会改变判断条件（计划）",
+            "budget_seconds": 75,
+            "spoken_characters": 276,
+            "fixed_seconds": 4.0,
+            "available_spoken_seconds": 71.0,
+            "minimum_required_cpm": 233.24
+          },
+          {
+            "heading": "05:15—06:00｜落实到重试流程（计划）",
+            "budget_seconds": 45,
+            "spoken_characters": 119,
+            "fixed_seconds": 4.0,
+            "available_spoken_seconds": 41.0,
+            "minimum_required_cpm": 174.15
+          }
+        ]
+      },
+      "critical_failures": [],
+      "new_issues": [],
+      "must_fix_before_publication": [],
+      "recommendation": "可纳入公开开发诊断材料，并保留估算时长与AI评阅来源说明；正式发言前完成真人计时试讲。"
+    },
+    {
+      "id": "T4",
+      "task": "T4",
+      "file": "evaluation/outputs/v2/T4.md",
+      "input_sha256": "86d2ae8b818d896461996ea2f2248ae56db3f6e726c5d07d616719d5b4d41dae",
+      "summary": "行政迁址与个人开始到校是不同事件；档案及口述用途取决于研究问题，社区层面结论依相应范围的材料判断。",
+      "checks": {
+        "F": {
+          "assessment": "1953年9月行政迁址、2018年受访者忆1954年到校及缺转学记录均准确；另一段口述单独指称，距离与路线待查。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 9,
+              "quote": "档案记录这所学校的行政迁址日期是1953年9月。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 17,
+              "quote": "受访者当年是否立即转学？案例对此尚无记录。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 25,
+              "quote": "另一段口述提到“离家更远了”。"
+            }
+          ]
+        },
+        "R": {
+          "assessment": "不同事件口径修复年份冲突推断；实际距离与记忆研究分别解释，社区结论收窄至相应材料范围。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 13,
+              "quote": "两条材料分别记录学校的行政事项和个人的上学经历，回答的问题不同。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 29,
+              "quote": "如果研究关心讲述者如何记忆上学经历，这句话已经提供了材料。"
+            }
+          ]
+        },
+        "A": {
+          "assessment": "两类事件、两类研究问题均有具体对象；查证建议写明其尚未取得的状态。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 17,
+              "quote": "核查个人回忆，应围绕个人开始到校这件事寻找依据。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 21,
+              "quote": "这里说的是后续查证方向，案例里尚未提供这些资料。"
+            }
+          ]
+        },
+        "V": {
+          "assessment": "末尾逐条重列年份与路程的盘点已删除；收束保存材料对象、说法与支持范围，保留原稿尺度。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 37,
+              "quote": "研究应分别说明这些材料回答哪个问题，以及哪些细节仍待核查。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 39,
+              "quote": "写清它谈的是哪件事，保存它原有的说法，并说明现有材料支持到哪一步。"
+            }
+          ]
+        },
+        "T": {
+          "assessment": "四段75+30+75+60=240秒，已含两处3秒停顿；计数728、口述234秒，初轮260秒冲突已消除。真实语速待试讲。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 52,
+              "quote": "合计240秒，口述234秒，停顿6秒。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 51,
+              "quote": "未进行真人试读或现场计时；无演示、互动及问答。"
+            }
+          ]
+        },
+        "U": {
+          "assessment": "指定第一人称原句逐字保留；实质修改说明恰为5条，未追加访谈情节或外部史实。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 7,
+              "quote": "我先去看档案，也去听老人怎么讲。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 47,
+              "quote": "5. 收窄“整个社区生活改变”的结论"
+            }
+          ]
+        }
+      },
+      "scores": {
+        "F": 3,
+        "R": 3,
+        "A": 3,
+        "V": 3,
+        "T": 2,
+        "U": 3
+      },
+      "initial_issues": [
+        {
+          "source": "evaluation/reviews/v1/judge-1.json",
+          "task": "T4",
+          "issue_index": 0,
+          "dimension": "T",
+          "initial_diagnosis": "4分钟预算有篇幅和分段安排，实际口头时长尚无验证；按规则T最高2。",
+          "status": "unresolved",
+          "assessment": "仍无真人试读、现场计时或听众反馈。现稿已准确标注估算状态；这项验证缺口持续存在，T记2。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 51,
+              "quote": "未进行真人试读或现场计时；无演示、互动及问答。"
+            }
+          ]
+        },
+        {
+          "source": "evaluation/reviews/v1/judge-2.json",
+          "task": "T4",
+          "issue_index": 0,
+          "dimension": "T",
+          "initial_diagnosis": "分项合计260秒，较4分钟总预算多20秒；与正文及停顿共240秒的另一安排冲突。",
+          "status": "resolved",
+          "assessment": "分项75+30+75+60=240秒，正文234秒及停顿6秒一致；已消除20秒冲突。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 52,
+              "quote": "合计240秒，口述234秒，停顿6秒。"
+            }
+          ]
+        },
+        {
+          "source": "evaluation/reviews/v1/judge-2.json",
+          "task": "T4",
+          "issue_index": 1,
+          "dimension": "V",
+          "initial_diagnosis": "该段重列前文已经充分解释的三项事实，紧接用途总结后新增信息有限。",
+          "status": "resolved",
+          "assessment": "末段删除日期与路程逐项复述，仅保留材料用途与支持范围的收束。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 37,
+              "quote": "研究应分别说明这些材料回答哪个问题，以及哪些细节仍待核查。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T4.md",
+              "line": 39,
+              "quote": "写清它谈的是哪件事，保存它原有的说法，并说明现有材料支持到哪一步。"
+            }
+          ]
+        }
+      ],
+      "timing": {
+        "method": "scripts/speech_check.py，正文按精确标题选择；每个汉字、ASCII数字及拉丁字母计一，排除标点、标题、附录及舞台提示。",
+        "section": "讲稿正文",
+        "spoken_characters": 728,
+        "body_fixed_cue_seconds": 6.0,
+        "additional_fixed_seconds": 0,
+        "fixed_seconds_total": 6.0,
+        "total_budget_seconds": 240,
+        "available_spoken_seconds": 234.0,
+        "minimum_required_cpm": 186.67,
+        "human_rehearsal_performed": false,
+        "status": "estimate",
+        "sensitivity_estimates": [
+          {
+            "hypothetical_cpm": 200,
+            "estimated_total_seconds": 224.4
+          },
+          {
+            "hypothetical_cpm": 230,
+            "estimated_total_seconds": 195.9
+          },
+          {
+            "hypothetical_cpm": 260,
+            "estimated_total_seconds": 174.0
+          }
+        ],
+        "interpretation": "参数200、230、260用于敏感性计算，未指定为讲者实测速度；最低字符速度表示在既定预算内读完正文所需的平均值。数字、英文及公式的真实读法须在试讲中计时。",
+        "segments": [
+          {
+            "heading": "00:00—01:15｜先核对两条日期各指什么（计划）",
+            "budget_seconds": 75,
+            "spoken_characters": 237,
+            "fixed_seconds": 3.0,
+            "available_spoken_seconds": 72.0,
+            "minimum_required_cpm": 197.5
+          },
+          {
+            "heading": "01:15—01:45｜后续查证围绕个人到校时间（计划）",
+            "budget_seconds": 30,
+            "spoken_characters": 95,
+            "fixed_seconds": 0.0,
+            "available_spoken_seconds": 30.0,
+            "minimum_required_cpm": 190.0
+          },
+          {
+            "heading": "01:45—03:00｜路程回忆对应两类研究问题（计划）",
+            "budget_seconds": 75,
+            "spoken_characters": 207,
+            "fixed_seconds": 3.0,
+            "available_spoken_seconds": 72.0,
+            "minimum_required_cpm": 172.5
+          },
+          {
+            "heading": "03:00—04:00｜说明现有材料的支持范围（计划）",
+            "budget_seconds": 60,
+            "spoken_characters": 189,
+            "fixed_seconds": 0.0,
+            "available_spoken_seconds": 60.0,
+            "minimum_required_cpm": 189.0
+          }
+        ]
+      },
+      "critical_failures": [],
+      "new_issues": [],
+      "must_fix_before_publication": [],
+      "recommendation": "可纳入公开开发诊断材料，并保留估算时长与AI评阅来源说明；正式发言前完成真人计时试讲。"
+    },
+    {
+      "id": "T5",
+      "task": "T5",
+      "file": "evaluation/outputs/v2/T5.md",
+      "input_sha256": "b59512358f6865f1eebb959e8def3cc27ac8cb6b28b10e9d19c33b2ae74b2b48",
+      "summary": "依据等待差异和预算继续一个月试点、设置人工预约窗口，优先核查预约完成差异及窗口效果，再讨论扩大范围。",
+      "checks": {
+        "F": {
+          "assessment": "1000到访、按日期随机、等待7分钟差、满意度0.1分差及预约未完成12个百分点差均准确；缺失分母与窗口效果状态明确。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 17,
+              "quote": "两种周末安排按日期随机分配。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 27,
+              "quote": "两组相差十二个百分点。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 43,
+              "quote": "人工窗口尚未测量效果。"
+            }
+          ]
+        },
+        "R": {
+          "assessment": "续试依据与扩大范围条件分开；满意度保留波动缺失，人工窗口定位为下一月检验事项。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 21,
+              "quote": "现有材料没有提供波动信息及检验结果。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 43,
+              "quote": "窗口的设置属于执行计划，改善幅度留待下一阶段记录回答。"
+            }
+          ]
+        },
+        "A": {
+          "assessment": "先给出继续一月的判断，再解释等待、预约差异和窗口验证；重复到访信息与分母用途有明确连接。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 31,
+              "quote": "这些资料关系到比例的分母，以及记录中有多少不同的到访者。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 51,
+              "quote": "扩展决定主要依据三项结果：现场等待、不同人群的预约完成差异，以及人工窗口的实际使用和效果。"
+            }
+          ]
+        },
+        "V": {
+          "assessment": "执行登记集中在人工窗口段；其他段落保留该信息的判断用途。末节扩展条件压缩，正式、平实。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 41,
+              "quote": "建议采用统一记录：注明日期与当日安排、预约渠道、所属人群、是否完成及未完成环节、实际到访与重复到访标识，并登记现场等待及满意度。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 55,
+              "quote": "当前建议依据现有预算和观察结果，支持这一月续试与核查。"
+            }
+          ]
+        },
+        "T": {
+          "assessment": "计数990、固定18秒；五段300秒。末节145字符扣3秒后约207字符/分钟，与前段负荷接近；真人计时待补。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 74,
+              "quote": "末段145个可读字符，扣除3秒停顿后所需速度约207个可读字符／分钟。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 76,
+              "quote": "尚未进行现场计时；5分钟为待试讲核对的估算。"
+            }
+          ]
+        },
+        "U": {
+          "assessment": "人工审读正文及附录，未见处置式转化、套式否定、宣传二元对立或口号化升格；机械关键词及配对扫描零命中。扩展判断明确。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 7,
+              "quote": "更大范围的扩展，安排在这一月的核查完成之后再讨论。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 55,
+              "quote": "长期效果列入后续评估。"
+            }
+          ]
+        }
+      },
+      "scores": {
+        "F": 3,
+        "R": 3,
+        "A": 3,
+        "V": 3,
+        "T": 2,
+        "U": 3
+      },
+      "initial_issues": [
+        {
+          "source": "evaluation/reviews/v1/judge-1.json",
+          "task": "T5",
+          "issue_index": 0,
+          "dimension": "T",
+          "initial_diagnosis": "5分钟预算需要约266字/分钟，涉及多组数字；稿件已如实披露估算，现场可完成性尚无实测。",
+          "status": "unresolved",
+          "assessment": "仍无真人试读、现场计时或听众反馈。现稿已准确标注估算状态；这项验证缺口持续存在，T记2。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 76,
+              "quote": "尚未进行现场计时；5分钟为待试讲核对的估算。"
+            }
+          ]
+        },
+        {
+          "source": "evaluation/reviews/v1/judge-2.json",
+          "task": "T5",
+          "issue_index": 0,
+          "dimension": "V",
+          "initial_diagnosis": "同一执行清单分散重述，挤占了介绍人工窗口如何检验的口头空间。",
+          "status": "resolved",
+          "assessment": "登记动作集中保留一份清单；前文的人数和重复到访内容用于说明分母缺口，已无需多次列执行清单。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 41,
+              "quote": "建议采用统一记录：注明日期与当日安排、预约渠道、所属人群、是否完成及未完成环节、实际到访与重复到访标识，并登记现场等待及满意度。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 31,
+              "quote": "这些资料关系到比例的分母，以及记录中有多少不同的到访者。"
+            }
+          ]
+        },
+        {
+          "source": "evaluation/reviews/v1/judge-2.json",
+          "task": "T5",
+          "issue_index": 1,
+          "dimension": "T",
+          "initial_diagnosis": "最终扩展条件比开场更密集，节奏后移。",
+          "status": "resolved",
+          "assessment": "结尾145字符、45秒含3秒停顿，约207字符/分钟；开场约202，初轮约304的末段高密度已解除。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T5.md",
+              "line": 74,
+              "quote": "末段145个可读字符，扣除3秒停顿后所需速度约207个可读字符／分钟。"
+            }
+          ]
+        }
+      ],
+      "timing": {
+        "method": "scripts/speech_check.py，正文按精确标题选择；每个汉字、ASCII数字及拉丁字母计一，排除标点、标题、附录及舞台提示。",
+        "section": "讲稿正文",
+        "spoken_characters": 990,
+        "body_fixed_cue_seconds": 18.0,
+        "additional_fixed_seconds": 0,
+        "fixed_seconds_total": 18.0,
+        "total_budget_seconds": 300,
+        "available_spoken_seconds": 282.0,
+        "minimum_required_cpm": 210.64,
+        "human_rehearsal_performed": false,
+        "status": "estimate",
+        "sensitivity_estimates": [
+          {
+            "hypothetical_cpm": 200,
+            "estimated_total_seconds": 315.0
+          },
+          {
+            "hypothetical_cpm": 230,
+            "estimated_total_seconds": 276.3
+          },
+          {
+            "hypothetical_cpm": 260,
+            "estimated_total_seconds": 246.5
+          }
+        ],
+        "interpretation": "参数200、230、260用于敏感性计算，未指定为讲者实测速度；最低字符速度表示在既定预算内读完正文所需的平均值。数字、英文及公式的真实读法须在试讲中计时。",
+        "segments": [
+          {
+            "heading": "00:00—01:00｜建议继续一个月试点（计划）",
+            "budget_seconds": 60,
+            "spoken_characters": 192,
+            "fixed_seconds": 3.0,
+            "available_spoken_seconds": 57.0,
+            "minimum_required_cpm": 202.11
+          },
+          {
+            "heading": "01:00—01:55｜等待时间支持续试，满意度判断保留尺度（计划）",
+            "budget_seconds": 55,
+            "spoken_characters": 195,
+            "fixed_seconds": 4.0,
+            "available_spoken_seconds": 51.0,
+            "minimum_required_cpm": 229.41
+          },
+          {
+            "heading": "01:55—03:00｜优先核查预约完成差异（计划）",
+            "budget_seconds": 65,
+            "spoken_characters": 207,
+            "fixed_seconds": 4.0,
+            "available_spoken_seconds": 61.0,
+            "minimum_required_cpm": 203.61
+          },
+          {
+            "heading": "03:00—04:15｜下月设置人工窗口并检验效果（计划）",
+            "budget_seconds": 75,
+            "spoken_characters": 251,
+            "fixed_seconds": 4.0,
+            "available_spoken_seconds": 71.0,
+            "minimum_required_cpm": 212.11
+          },
+          {
+            "heading": "04:15—05:00｜核查后再决定扩展范围（计划）",
+            "budget_seconds": 45,
+            "spoken_characters": 145,
+            "fixed_seconds": 3.0,
+            "available_spoken_seconds": 42.0,
+            "minimum_required_cpm": 207.14
+          }
+        ]
+      },
+      "critical_failures": [],
+      "new_issues": [],
+      "must_fix_before_publication": [],
+      "recommendation": "可纳入公开开发诊断材料，并保留估算时长与AI评阅来源说明；正式发言前完成真人计时试讲。",
+      "constraint_scan": {
+        "scope": "正文及附录全文",
+        "literal_rules": [
+          "把",
+          "用一个",
+          "不能认为",
+          "不意味着",
+          "不代表"
+        ],
+        "regex_rules": [
+          "不是[\\s\\S]{0,80}而是",
+          "让[\\s\\S]{0,80}成为"
+        ],
+        "hits": [],
+        "manual_read_performed": true
+      }
+    },
+    {
+      "id": "T6-round1",
+      "task": "T6-round1",
+      "file": "evaluation/outputs/v2/T6-round1.md",
+      "input_sha256": "8e160ec09bdb7f50efa5b072845c59baf8b7fbd16dda38c49dfd08cb10c984a1",
+      "summary": "资料仅有题目时，先标明效果数字缺记录依据，再提供假设场景、数字口径及后续核查的备稿。",
+      "checks": {
+        "F": {
+          "assessment": "口述先声明缺原始记录，随后引用待核实30%；个人故事采用已标识的假设，50/65/80数字明示计算演示。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T6-round1.md",
+              "line": 9,
+              "quote": "我目前只有题目，尚未拿到原始记录。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T6-round1.md",
+              "line": 31,
+              "quote": "下面的数值仅用于演示计算。"
+            }
+          ]
+        },
+        "R": {
+          "assessment": "理解提示与实际投放分别评价；百分比与百分点由起终比例说明，测量条件和同期措施保持待核查。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T6-round1.md",
+              "line": 27,
+              "quote": "前者检查提示是否容易理解；后者检查实际行为。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T6-round1.md",
+              "line": 33,
+              "quote": "正确率从 50% 升到 65%，增加了十五个百分点。相对原来的 50%，增幅才是 30%。"
+            }
+          ]
+        },
+        "A": {
+          "assessment": "先讲证据状态再进入醒目数字；纸杯情景解释清楚的具体含义，计算例子支持数字口径。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T6-round1.md",
+              "line": 9,
+              "quote": "原题中的“分类正确率提高了百分之三十”，仍待核实。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T6-round1.md",
+              "line": 13,
+              "quote": "这是一个假设情景。"
+            }
+          ]
+        },
+        "V": {
+          "assessment": "假设场景服务判断，没有伪写用户触动故事；结尾回到投放记录。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T6-round1.md",
+              "line": 43,
+              "quote": "评价一张新标识，可以从垃圾桶前的几秒钟开始，也应当落实到投放记录中的每一次判断。"
+            }
+          ]
+        },
+        "T": {
+          "assessment": "计数825、停顿8秒；230字符/分钟为编排假设，约215秒口述，余约17秒。真实时长待测。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T6-round1.md",
+              "line": 50,
+              "quote": "明确停顿共 8 秒，另留约 17 秒现场余量"
+            },
+            {
+              "file": "evaluation/outputs/v2/T6-round1.md",
+              "line": 50,
+              "quote": "语速为编排假设，尚无本人试读记录"
+            }
+          ]
+        },
+        "U": {
+          "assessment": "完成可用备稿并简列待补项目，保留缺材料状态；未联网推断本地试点事实或伪造个人经历。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T6-round1.md",
+              "line": 49,
+              "quote": "**待补资料**：30% 的来源、改善前后正确率及分母"
+            },
+            {
+              "file": "evaluation/outputs/v2/T6-round1.md",
+              "line": 3,
+              "quote": "故事段明确采用假设情景。"
+            }
+          ]
+        }
+      },
+      "scores": {
+        "F": 3,
+        "R": 3,
+        "A": 3,
+        "V": 3,
+        "T": 2,
+        "U": 3
+      },
+      "initial_issues": [
+        {
+          "source": "evaluation/reviews/v1/judge-1.json",
+          "task": "T6-round1",
+          "issue_index": 0,
+          "dimension": "T",
+          "initial_diagnosis": "4分钟有篇幅与动作预算，仍缺真实口播计时；按规则T最高2。",
+          "status": "unresolved",
+          "assessment": "仍无真人试读、现场计时或听众反馈。现稿已准确标注估算状态；这项验证缺口持续存在，T记2。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T6-round1.md",
+              "line": 50,
+              "quote": "语速为编排假设，尚无本人试读记录"
+            }
+          ]
+        },
+        {
+          "source": "evaluation/reviews/v1/judge-2.json",
+          "task": "T6-round1",
+          "issue_index": 0,
+          "dimension": "A",
+          "initial_diagnosis": "虽然明确归于题目并紧接限定，首次听众仍可能先记住醒目的效果数字。",
+          "status": "resolved",
+          "assessment": "开场先说明仅有题目且无原始记录，再引用待核实百分之三十；限定在口述正文就近出现。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T6-round1.md",
+              "line": 9,
+              "quote": "我目前只有题目，尚未拿到原始记录。原题中的“分类正确率提高了百分之三十”，仍待核实。"
+            }
+          ]
+        }
+      ],
+      "timing": {
+        "method": "scripts/speech_check.py，正文按精确标题选择；每个汉字、ASCII数字及拉丁字母计一，排除标点、标题、附录及舞台提示。",
+        "section": "讲稿",
+        "spoken_characters": 825,
+        "body_fixed_cue_seconds": 8.0,
+        "additional_fixed_seconds": 0,
+        "fixed_seconds_total": 8.0,
+        "total_budget_seconds": 240,
+        "available_spoken_seconds": 232.0,
+        "minimum_required_cpm": 213.36,
+        "human_rehearsal_performed": false,
+        "status": "estimate",
+        "sensitivity_estimates": [
+          {
+            "hypothetical_cpm": 200,
+            "estimated_total_seconds": 255.5
+          },
+          {
+            "hypothetical_cpm": 230,
+            "estimated_total_seconds": 223.2
+          },
+          {
+            "hypothetical_cpm": 260,
+            "estimated_total_seconds": 198.4
+          }
+        ],
+        "interpretation": "参数200、230、260用于敏感性计算，未指定为讲者实测速度；最低字符速度表示在既定预算内读完正文所需的平均值。数字、英文及公式的真实读法须在试讲中计时。",
+        "declared_hypothetical_cpm": 230,
+        "remaining_seconds_at_declared_cpm": 16.78
+      },
+      "critical_failures": [],
+      "new_issues": [],
+      "must_fix_before_publication": [],
+      "recommendation": "可纳入公开开发诊断材料，并保留估算时长与AI评阅来源说明；正式发言前完成真人计时试讲。"
+    },
+    {
+      "id": "T6-round2",
+      "task": "T6-round2",
+      "file": "evaluation/outputs/v2/T6-round2.md",
+      "input_sha256": "cf54278a17d17925e91beab97d0b976382bc628ae2b095c68d3deda628c8da97",
+      "summary": "6人访谈中的5人清楚反馈是后续线索；通过理解测试与现场投放记录判断标识的帮助，移除30%结论。",
+      "checks": {
+        "F": {
+          "assessment": "6人访谈、5人清楚反馈准确；缺实际投放和正确率记录在同一开场段直述，正文移除30%结论。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T6-round2.md",
+              "line": 7,
+              "quote": "项目上周访谈了 6 人，其中 5 人说，标识更清楚了。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T6-round2.md",
+              "line": 7,
+              "quote": "目前没有实际投放记录，也没有正确率统计。"
+            }
+          ]
+        },
+        "R": {
+          "assessment": "从清楚反馈提出理解测试和实际投放两步；随机点位、一致同期安排与记录标准支持后续比较，均保持计划状态。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T6-round2.md",
+              "line": 19,
+              "quote": "随机安排他们看原有标识或新标识，回答同样的投放问题。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T6-round2.md",
+              "line": 27,
+              "quote": "下一轮试点，可以选择几个条件接近的点位"
+            }
+          ]
+        },
+        "A": {
+          "assessment": "证据缺口就近交代；纸杯与80%不同分母的例子都明示假设或演示。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T6-round2.md",
+              "line": 13,
+              "quote": "先举一个假设例子。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T6-round2.md",
+              "line": 31,
+              "quote": "这些数值仅作演示，实际结果要来自现场记录。"
+            }
+          ]
+        },
+        "V": {
+          "assessment": "三步顺序围绕当前反馈和后续判断展开，结尾回到原反馈，语气克制。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T6-round2.md",
+              "line": 17,
+              "quote": "第一步，检查理解。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T6-round2.md",
+              "line": 25,
+              "quote": "第二步，观察实际投放。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T6-round2.md",
+              "line": 35,
+              "quote": "最后，根据结果决定怎样修改。"
+            }
+          ]
+        },
+        "T": {
+          "assessment": "计数863、停顿6秒；230字符/分钟的编排假设对应约225秒口述及9秒余量。未见虚构真人计时。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T6-round2.md",
+              "line": 50,
+              "quote": "明确停顿共 6 秒，预留约 9 秒现场余量"
+            },
+            {
+              "file": "evaluation/outputs/v2/T6-round2.md",
+              "line": 50,
+              "quote": "语速为编排假设，当前尚无讲者试读记录"
+            }
+          ]
+        },
+        "U": {
+          "assessment": "依补充事实完成四分钟方案，未保留30%效果结论或个人故事；理解测试和现场观察均标为待实施。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T6-round2.md",
+              "line": 48,
+              "quote": "理解测试、点位分组与现场观察均为下一轮方案，尚未执行。"
+            }
+          ]
+        }
+      },
+      "scores": {
+        "F": 3,
+        "R": 3,
+        "A": 3,
+        "V": 3,
+        "T": 2,
+        "U": 3
+      },
+      "initial_issues": [
+        {
+          "source": "evaluation/reviews/v1/judge-1.json",
+          "task": "T6-round2",
+          "issue_index": 0,
+          "dimension": "T",
+          "initial_diagnosis": "4分钟排程有计数和余量，实讲语速及停顿尚未验证；按规则T最高2。",
+          "status": "unresolved",
+          "assessment": "仍无真人试读、现场计时或听众反馈。现稿已准确标注估算状态；这项验证缺口持续存在，T记2。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T6-round2.md",
+              "line": 50,
+              "quote": "语速为编排假设，当前尚无讲者试读记录"
+            }
+          ]
+        },
+        {
+          "source": "evaluation/reviews/v1/judge-2.json",
+          "task": "T6-round2",
+          "issue_index": 0,
+          "dimension": "A",
+          "initial_diagnosis": "口头正文已有后续检验定位；开场补充当前尚无投放统计，可更直接标明证据状态。",
+          "status": "resolved",
+          "assessment": "访谈6人、5人反馈后立即声明缺投放记录与正确率统计，正文与附录一致。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T6-round2.md",
+              "line": 7,
+              "quote": "项目上周访谈了 6 人，其中 5 人说，标识更清楚了。目前没有实际投放记录，也没有正确率统计。"
+            }
+          ]
+        }
+      ],
+      "timing": {
+        "method": "scripts/speech_check.py，正文按精确标题选择；每个汉字、ASCII数字及拉丁字母计一，排除标点、标题、附录及舞台提示。",
+        "section": "讲稿正文",
+        "spoken_characters": 863,
+        "body_fixed_cue_seconds": 6.0,
+        "additional_fixed_seconds": 0,
+        "fixed_seconds_total": 6.0,
+        "total_budget_seconds": 240,
+        "available_spoken_seconds": 234.0,
+        "minimum_required_cpm": 221.28,
+        "human_rehearsal_performed": false,
+        "status": "estimate",
+        "sensitivity_estimates": [
+          {
+            "hypothetical_cpm": 200,
+            "estimated_total_seconds": 264.9
+          },
+          {
+            "hypothetical_cpm": 230,
+            "estimated_total_seconds": 231.1
+          },
+          {
+            "hypothetical_cpm": 260,
+            "estimated_total_seconds": 205.2
+          }
+        ],
+        "interpretation": "参数200、230、260用于敏感性计算，未指定为讲者实测速度；最低字符速度表示在既定预算内读完正文所需的平均值。数字、英文及公式的真实读法须在试讲中计时。",
+        "declared_hypothetical_cpm": 230,
+        "remaining_seconds_at_declared_cpm": 8.87
+      },
+      "critical_failures": [],
+      "new_issues": [],
+      "must_fix_before_publication": [],
+      "recommendation": "可纳入公开开发诊断材料，并保留估算时长与AI评阅来源说明；正式发言前完成真人计时试讲。"
+    },
+    {
+      "id": "T7",
+      "task": "T7",
+      "file": "evaluation/outputs/v2/T7.md",
+      "input_sha256": "a826d0ff5ac6481cef5e8210fb900188b3c8cbe1659b10f199e77feffe16aaee",
+      "summary": "离开字面须评价具体词语的意义变化及语境依据；句内关系支持倾向A，B的意象和情绪仍留有讨论空间。",
+      "checks": {
+        "F": {
+          "assessment": "与v1字节相同；原句、两译法、练习身份及缺全书语境均保留，后文条件明示假设。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T7.md",
+              "line": 11,
+              "quote": "这是一组原创翻译练习，未指向实际出版作品。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T7.md",
+              "line": 49,
+              "quote": "这两种情况是假设的判断条件，现有材料尚未提供答案。"
+            }
+          ]
+        },
+        "R": {
+          "assessment": "字面自由依据句内改动、读法及语境条件逐项判断；A优先、B待语境的结论有具体细节支持。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T7.md",
+              "line": 25,
+              "quote": "A接近原句，依然经过了语义和声音上的取舍。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T7.md",
+              "line": 33,
+              "quote": "原句中有停留，B又写出了挽留。"
+            }
+          ]
+        },
+        "A": {
+          "assessment": "不依赖翻译理论术语；主语、光形、黄昏与挽留各有句内例子和对读。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T7.md",
+              "line": 9,
+              "quote": "前一句先出现光，后一句先出现河面。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T7.md",
+              "line": 31,
+              "quote": "B没有直接写光，改写为“黄昏”。"
+            }
+          ]
+        },
+        "V": {
+          "assessment": "结尾保留明确倾向和开放分歧，无个人故事、名人引言、成功学或行动号召。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T7.md",
+              "line": 55,
+              "quote": "只有这一句时，我倾向于A；B的文学效果值得讨论"
+            }
+          ]
+        },
+        "T": {
+          "assessment": "计数1216、停顿8秒，与原稿一致；分项45+65+65+45+50+30=300秒。英文和两次对读仍需实测。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T7.md",
+              "line": 59,
+              "quote": "正文讲述计划约4分52秒，明确停顿共8秒"
+            },
+            {
+              "file": "evaluation/outputs/v2/T7.md",
+              "line": 59,
+              "quote": "未进行真人试读或完整现场计时；无互动及问答。"
+            }
+          ]
+        },
+        "U": {
+          "assessment": "围绕同一处翻译选择，以作品细节支撑倾向并保留进一步语境；各项体裁限制保留。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T7.md",
+              "line": 55,
+              "quote": "保留“光”还是写成“黄昏”，描写“停留”还是增加“挽留”。"
+            },
+            {
+              "file": "evaluation/outputs/v2/T7.md",
+              "line": 62,
+              "quote": "仅使用给定原创练习材料。"
+            }
+          ]
+        }
+      },
+      "scores": {
+        "F": 3,
+        "R": 3,
+        "A": 3,
+        "V": 3,
+        "T": 2,
+        "U": 3
+      },
+      "initial_issues": [
+        {
+          "source": "evaluation/reviews/v1/judge-1.json",
+          "task": "T7",
+          "issue_index": 0,
+          "dimension": "T",
+          "initial_diagnosis": "对读、英文原句与重音停连影响真实时长；已有5分钟计划，尚无实测。",
+          "status": "unresolved",
+          "assessment": "仍无真人试读、现场计时或听众反馈。现稿已准确标注估算状态；这项验证缺口持续存在，T记2。",
+          "evidence": [
+            {
+              "file": "evaluation/outputs/v2/T7.md",
+              "line": 59,
+              "quote": "未进行真人试读或完整现场计时；无互动及问答。"
+            }
+          ]
+        }
+      ],
+      "timing": {
+        "method": "scripts/speech_check.py，正文按精确标题选择；每个汉字、ASCII数字及拉丁字母计一，排除标点、标题、附录及舞台提示。",
+        "section": "讲稿正文",
+        "spoken_characters": 1216,
+        "body_fixed_cue_seconds": 8.0,
+        "additional_fixed_seconds": 0,
+        "fixed_seconds_total": 8.0,
+        "total_budget_seconds": 300,
+        "available_spoken_seconds": 292.0,
+        "minimum_required_cpm": 249.86,
+        "human_rehearsal_performed": false,
+        "status": "estimate",
+        "sensitivity_estimates": [
+          {
+            "hypothetical_cpm": 200,
+            "estimated_total_seconds": 372.8
+          },
+          {
+            "hypothetical_cpm": 230,
+            "estimated_total_seconds": 325.2
+          },
+          {
+            "hypothetical_cpm": 260,
+            "estimated_total_seconds": 288.6
+          }
+        ],
+        "interpretation": "参数200、230、260用于敏感性计算，未指定为讲者实测速度；最低字符速度表示在既定预算内读完正文所需的平均值。数字、英文及公式的真实读法须在试讲中计时。",
+        "appendix_segment_budgets_seconds": [
+          45,
+          65,
+          65,
+          45,
+          50,
+          30
+        ]
+      },
+      "critical_failures": [],
+      "new_issues": [],
+      "must_fix_before_publication": [],
+      "recommendation": "可纳入公开开发诊断材料，并保留估算时长与AI评阅来源说明；正式发言前完成真人计时试讲。",
+      "preservation_check": {
+        "byte_identical_to_v1": true,
+        "v1_sha256": "a826d0ff5ac6481cef5e8210fb900188b3c8cbe1659b10f199e77feffe16aaee",
+        "v2_sha256": "a826d0ff5ac6481cef5e8210fb900188b3c8cbe1659b10f199e77feffe16aaee"
+      }
+    }
+  ],
+  "publication_decision": {
+    "must_fix_before_publication": false,
+    "critical_failures_found": 0,
+    "new_key_fact_logic_or_constraint_errors_found": 0,
+    "initial_issue_status_counts": {
+      "resolved": 12,
+      "partially_resolved": 0,
+      "unresolved": 8
+    },
+    "assessment": "12项初轮内容与排程编辑意见已解决；8项真人时间验证缺口持续存在。未发现发布前必须修改的关键事实、逻辑、明确约束或预算算术错误。",
+    "publication_scope": "可公开为开发案例的AI文字评阅结果；时间维度保持2，现场时长与听众理解继续列为待测。"
+  }
+}
