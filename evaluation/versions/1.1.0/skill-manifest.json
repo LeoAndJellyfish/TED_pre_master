@@ -1,0 +1,20 @@
+{
+  "version": "1.1.0",
+  "frozen_at_utc": "2026-10-18T13:24:02.321994+00:00",
+  "previous_release": "v1.0.0",
+  "purpose": "current payload snapshot before independent revision trials",
+  "author_read_forward_prompt_before_freeze": false,
+  "forward_input_sha256": "2a4e0d6e22db331c33880bb2119ed1207c803cfe44008f60044d9f73e7d25619",
+  "evidence_manifest": "evaluation/versions/1.1.0/evidence-manifest.json",
+  "files": {
+    "LICENSE": "73069e2b170d1abe885f86c5a69b1a32ea0de9806965c485756136d675be10d1",
+    "SKILL.md": "a027b7a34c00a5bfcf59f7101d250f3b194ac5d6f002d60a98fc0078e89f3318",
+    "agents/openai.yaml": "a01967a5a1f468b4c8014c90d010366bd6a4abdf81d7cd6ce9b6fc3da3a1a806",
+    "references/architecture.md": "c069752ac30ba3803c6af7e9027db56c704a543b4365d392b8fc3cb033db44d7",
+    "references/facts-and-rehearsal.md": "71ec81b0d057de12223a851085632e25a0eedcd0afea45eeb8104e685d4f5820",
+    "references/paragraph-rewrites.md": "44b56366558963e9e3d5f2d15eff8dc12f7397d5b6364bbe5f29579327a3ca91",
+    "references/spoken-chinese.md": "636c026d2719a20071e7bfeb3fba779885130a56cc1b3d50b07548fc61d7a4fa",
+    "references/ted-evidence.md": "14d48f997dcdf61f36a2c75654c5f58ccb871e27034c601cea1cb84f9b1856dc",
+    "scripts/speech_check.py": "3f7b625019cedc992d597c9af06050cea9f4772fcbb9613968f7150f6a9c837f"
+  }
+}

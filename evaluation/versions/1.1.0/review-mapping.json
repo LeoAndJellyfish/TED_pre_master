@@ -1,0 +1,18 @@
+{
+  "pair-1-M": {
+    "case": "R1",
+    "condition": "original"
+  },
+  "pair-1-N": {
+    "case": "R1",
+    "condition": "revision"
+  },
+  "pair-2-P": {
+    "case": "F1",
+    "condition": "revision"
+  },
+  "pair-2-Q": {
+    "case": "F1",
+    "condition": "original"
+  }
+}

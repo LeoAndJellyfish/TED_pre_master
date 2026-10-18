@@ -1,0 +1,89 @@
+{
+  "tool": "academic-less-ai-tone/scripts/claim_preflight.py",
+  "role": "source and style candidate scan; not a quality score",
+  "reference_file": "references/paragraph-rewrites.md",
+  "reference_sha256": "44b56366558963e9e3d5f2d15eff8dc12f7397d5b6364bbe5f29579327a3ca91",
+  "examples": [
+    {
+      "example": 1,
+      "strict_exit_code": 0,
+      "report": {
+        "novel_number_tokens": [],
+        "source_number_tokens_not_in_revision": [],
+        "scope_words_absent_from_source": [],
+        "plan_phrases_absent_from_source": [],
+        "strong_words_absent_from_source": [],
+        "supported_explanation_may_be_lost": false,
+        "source_quantifiers_absent_from_revision": [],
+        "ordinal_group_references_to_check": [],
+        "source_absent_method_candidates": [],
+        "opposite_term_candidates": [],
+        "style_candidates": [],
+        "blocking_candidates": []
+      },
+      "manual_decisions": []
+    },
+    {
+      "example": 2,
+      "strict_exit_code": 0,
+      "report": {
+        "novel_number_tokens": [],
+        "source_number_tokens_not_in_revision": [],
+        "scope_words_absent_from_source": [],
+        "plan_phrases_absent_from_source": [],
+        "strong_words_absent_from_source": [],
+        "supported_explanation_may_be_lost": false,
+        "source_quantifiers_absent_from_revision": [],
+        "ordinal_group_references_to_check": [],
+        "source_absent_method_candidates": [],
+        "opposite_term_candidates": [],
+        "style_candidates": [],
+        "blocking_candidates": []
+      },
+      "manual_decisions": []
+    },
+    {
+      "example": 3,
+      "strict_exit_code": 0,
+      "report": {
+        "novel_number_tokens": [],
+        "source_number_tokens_not_in_revision": [],
+        "scope_words_absent_from_source": [],
+        "plan_phrases_absent_from_source": [],
+        "strong_words_absent_from_source": [],
+        "supported_explanation_may_be_lost": false,
+        "source_quantifiers_absent_from_revision": [],
+        "ordinal_group_references_to_check": [],
+        "source_absent_method_candidates": [],
+        "opposite_term_candidates": [],
+        "style_candidates": [],
+        "blocking_candidates": []
+      },
+      "manual_decisions": []
+    },
+    {
+      "example": 4,
+      "strict_exit_code": 0,
+      "report": {
+        "novel_number_tokens": [
+          "1",
+          "4"
+        ],
+        "source_number_tokens_not_in_revision": [],
+        "scope_words_absent_from_source": [],
+        "plan_phrases_absent_from_source": [],
+        "strong_words_absent_from_source": [],
+        "supported_explanation_may_be_lost": false,
+        "source_quantifiers_absent_from_revision": [],
+        "ordinal_group_references_to_check": [],
+        "source_absent_method_candidates": [],
+        "opposite_term_candidates": [],
+        "style_candidates": [],
+        "blocking_candidates": []
+      },
+      "manual_decisions": [
+        "4 = 16 - 12 and 1 = 13 - 12; both are changes in group mean score, retained."
+      ]
+    }
+  ]
+}

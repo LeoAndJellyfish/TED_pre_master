@@ -1,0 +1,545 @@
+{
+  "schema_version": "1.0",
+  "review_id": "v1.1_independent_paired_review",
+  "reviewer": {
+    "kind": "AI_text_reviewer",
+    "model": null,
+    "human_trial_delivery": false,
+    "note": "本评阅全部依据文本；生成模型与评阅模型未从元数据确认，均按未知处理。"
+  },
+  "method": {
+    "stage_1": "先且仅阅读四份匿名正文，按口述自然程度、句群推进与实例机制可复述性形成判断，并保存首读JSON。",
+    "stage_2": "首读保存后，阅读两题事实与任务文件、forward-judge-notes.md，以及R1/F1首次成品。随后匹配源稿并核对事实、关系、数值、范围、必留句、附注和时长算术。",
+    "disallowed_materials_read": [],
+    "excluded_materials": [
+      "技能正文",
+      "匿名映射文件",
+      "生成过程",
+      "其他评阅",
+      "历史评语",
+      "作者评论"
+    ],
+    "forward_judge_notes_role": "按指定作为第二阶段判读规则读取，未用于第一阶段。",
+    "pair_order_policy": "首读排序形成于身份识别之前，事实核查维持该排序。",
+    "first_read_preservation": "首读文件保存后保持原样；第二阶段纠正记录另列。",
+    "manuscript_mutations": [],
+    "test_scope": "仅执行源稿与匿名稿文本匹配、可读字符计数、附注句数、必留句次数和哈希核验，未扩展测试。",
+    "character_count_method": "从首次成品剔除标题、方括号舞台说明与附注后，统计CJK统一表意文字、扩展A、ASCII字母和数字；标点与空白不计。",
+    "source_matching_method": "支付source_draft提取正文、剔除Markdown标题及方括号舞台说明；博物馆source_draft直接使用。成品剔除标题、舞台说明及附注后，删除空白进行大小写敏感匹配。"
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "first_read": {
+      "path": "evaluation/versions/1.1.0/reviews/first-read.json",
+      "sha256": "2b3d478ffd54f784d7956cb9909c26b9f190247b1a12cffc62a796a7c79be192",
+      "saved_before_stage_2": true,
+      "hash_unchanged_after_stage_2": true,
+      "encoding": "UTF-8 without BOM",
+      "newline": "LF",
+      "bom_detected": false,
+      "cr_byte_count": 0
+    },
+    "inputs": [
+      {
+        "id": "pair-1-M.md",
+        "path": "evaluation/versions/1.1.0/blind-texts/pair-1-M.md",
+        "first_read_stage": "stage_1",
+        "sha256": "4922e4b97bae0a0e4a301b38570e057b6d4d3fe0c5be715b7852fb3471c4eed6"
+      },
+      {
+        "id": "pair-1-N.md",
+        "path": "evaluation/versions/1.1.0/blind-texts/pair-1-N.md",
+        "first_read_stage": "stage_1",
+        "sha256": "d69e8ace5de4f092ca05e9687d22dfe3e40c3d243b7bbe73adaa97fb617b7d9d"
+      },
+      {
+        "id": "pair-2-P.md",
+        "path": "evaluation/versions/1.1.0/blind-texts/pair-2-P.md",
+        "first_read_stage": "stage_1",
+        "sha256": "3cd7232351d6580a37e1a7e5f00f380f408a8006dec5673c59e7b78dd92b2326"
+      },
+      {
+        "id": "pair-2-Q.md",
+        "path": "evaluation/versions/1.1.0/blind-texts/pair-2-Q.md",
+        "first_read_stage": "stage_1",
+        "sha256": "8d19b4a61dbcbfcca18c4dbe1a8342dcfb536d1a6ddcd4766b2bc494c6af6403"
+      },
+      {
+        "id": "regression-case.json",
+        "path": "evaluation/versions/1.1.0/regression-case.json",
+        "first_read_stage": "stage_2",
+        "sha256": "f7122d4c1cdb8b2fa104ae541bd2c25fb9dcdaccc269ca8f6442f64f9e70fcbb"
+      },
+      {
+        "id": "forward-case.json",
+        "path": "evaluation/versions/1.1.0/forward-case.json",
+        "first_read_stage": "stage_2",
+        "sha256": "2a4e0d6e22db331c33880bb2119ed1207c803cfe44008f60044d9f73e7d25619"
+      },
+      {
+        "id": "forward-judge-notes.md",
+        "path": "evaluation/versions/1.1.0/forward-judge-notes.md",
+        "first_read_stage": "stage_2",
+        "sha256": "8e32e1e640d8104c628d21d2db4fd3c321092dde658df74d0eb08ca10ba5016a"
+      },
+      {
+        "id": "R1.md",
+        "path": "evaluation/versions/1.1.0/outputs/R1.md",
+        "first_read_stage": "stage_2",
+        "sha256": "8a041cc6981d62aae2dbd9bd4055966a8eed983cc443031275db8b75f97761cb"
+      },
+      {
+        "id": "F1.md",
+        "path": "evaluation/versions/1.1.0/outputs/F1.md",
+        "first_read_stage": "stage_2",
+        "sha256": "9a551cf33c6f78126d0c32c9a878b7f8caa651f3943d2ea0f7b7d4102485e99b"
+      }
+    ],
+    "source_matches": {
+      "regression_source_equals_M": true,
+      "forward_source_equals_Q": true,
+      "R1_spoken_body_equals_N": true,
+      "F1_spoken_body_equals_P": true
+    }
+  },
+  "mapping": [
+    {
+      "pair_id": "pair-1",
+      "original_anonymous_id": "M",
+      "revised_anonymous_id": "N",
+      "original_source": "regression-case.json.source_draft spoken body",
+      "revised_artifact": "R1.md",
+      "matched": true
+    },
+    {
+      "pair_id": "pair-2",
+      "original_anonymous_id": "Q",
+      "revised_anonymous_id": "P",
+      "original_source": "forward-case.json.source_draft",
+      "revised_artifact": "F1.md",
+      "matched": true
+    }
+  ],
+  "first_read_result": {
+    "pair_1_preferred": "N",
+    "pair_2_preferred": "P",
+    "basis": "首读均选择修订稿。支付稿的优势来自风险先行、同一假设操作的连续展开；博物馆稿的优势来自以观众疑问连接材料比较、展签顺序与观察结果，机械报幕减少。长度和禁词数量未作为评分依据。",
+    "retained_criticism": "R1仍重复完整解释换键风险；F1的数据安排与范围说明仍较密，末段长列举仍可调整。"
+  },
+  "stage_2_corrections_to_first_read": [
+    {
+      "pair_id": "pair-2",
+      "first_read_issue": "对“人站在展柜前，眼睛未必已经走进展览。”标记抽象修辞，并在可改前提下提出具体化建议。",
+      "checked_requirement": "forward-case.json.user_request明确要求正文自然原样保留一次。",
+      "final_judgment": "撤回对此句的删除或改写建议。F1原样出现一次，前面有五升与公斤的疑问，后面接讲解可沿疑问说明木斗量什么，语境自然。",
+      "first_read_modified": false
+    },
+    {
+      "pair_id": "pair-1",
+      "first_read_issue": "希望“同时到达的请求须遵守同一项键记录”补充第二个请求接下来的处理。",
+      "checked_requirement": "冻结规格仅提供原子占用、处理中及最终记录，并未提供处理中请求的具体响应协议。",
+      "final_judgment": "保留句法可更具体的建议；收窄到解释请求共用同一账户与键的记录。后续修订避免新增等待、报错、状态码或响应协议。",
+      "first_read_modified": false
+    },
+    {
+      "pair_id": "pair-2",
+      "first_read_issue": "观察安排与范围说明口述负担较重，建议拆句。",
+      "checked_requirement": "非随机安排、样本选择、数据分母、阅读记录范围、长期记忆及迁移范围均属任务必核项。",
+      "final_judgment": "维持拆句与停顿建议；这些条件全部保留，优化句法与分段。",
+      "first_read_modified": false
+    }
+  ],
+  "case_reviews": [
+    {
+      "case_id": "R1_payment_revision",
+      "pair_id": "pair-1",
+      "final_preference": "N / R1",
+      "overall_status": "符合核心事实与完整交付要求；口述组织较源稿改善；仍建议一次定点文字修订。",
+      "complete_explanation": {
+        "status": "通过",
+        "chain": [
+          "客户端等待十秒并显示超时",
+          "服务器可能已处理且回复丢失",
+          "结果未知时，新请求可能重复付款",
+          "同业务沿用原键及原内容",
+          "账户与键共同识别",
+          "同键同内容返回已保存结果，改内容拒绝",
+          "并发需原子占用且记录处理中和最终结果",
+          "换键创建新请求，24小时后记录可能失效",
+          "界定账户、保留期与跨系统长期保证范围"
+        ],
+        "lost_required_explanation": []
+      },
+      "fact_checks": [
+        {
+          "item": "合成规格与假设操作；面向非技术产品同事",
+          "status": "通过",
+          "revision_evidence": "我们来看一套合成的支付接口规格，用一次假设操作；网页或应用称为客户端，另一端接收请求、处理支付并返回结果称为服务器",
+          "note": "未增加亲历、对话、真实机构或英雄叙事。"
+        },
+        {
+          "item": "客户端十秒超时；服务器可能已处理、回复丢失",
+          "status": "通过",
+          "revision_evidence": "十秒过去，客户端显示超时。这时，服务器可能已经处理了支付，只是回复在途中丢失。",
+          "note": "舞台画面选择已处理而回复丢失的假设分支，与正文的可能性说明一致。"
+        },
+        {
+          "item": "未收到回复与处理结果未知之间的关系",
+          "status": "通过",
+          "revision_evidence": "页面能确定的是，十秒内没有收到回复；至于付款处理到了哪一步，页面掌握的信息仍然不足。",
+          "note": "区分客户端观察与服务器支付状态，未将超时推定为付款失败。"
+        },
+        {
+          "item": "同一业务的首次请求和重试用同一幂等键",
+          "status": "通过",
+          "revision_evidence": "同一笔业务付款从首次发送到后续重试，都携带同一个识别标记，技术上称为幂等键。"
+        },
+        {
+          "item": "作用范围为账户＋键",
+          "status": "通过",
+          "revision_evidence": "键 A 要连同所属账户一起识别；不同账户各有自己的记录。"
+        },
+        {
+          "item": "同键同内容返回已保存结果",
+          "status": "通过",
+          "revision_evidence": "仍然使用键 A，并保持原来的请求内容；支付已经完成、结果已经保存时，服务器就返回保存的结果。",
+          "note": "返回既存结果的完成与保存条件完整。"
+        },
+        {
+          "item": "同键不同内容被拒绝",
+          "status": "通过",
+          "revision_evidence": "金额如果改成一百二十元，却继续使用键 A，服务器会拒绝",
+          "note": "一百元、一百二十元属于明确标记的假设实例。"
+        },
+        {
+          "item": "原子占用账户下的键，并发遵守相同规则",
+          "status": "通过",
+          "revision_evidence": "服务器就要在一个完整步骤中检查并占用该账户下的键。这个要求称为原子地占用",
+          "note": "先查再分别处理的失败例子为原子要求提供可复述机制。"
+        },
+        {
+          "item": "记录处理中状态与最终结果",
+          "status": "通过",
+          "revision_evidence": "占用之后，服务器还要记录处理中状态，最后保存处理结果。",
+          "note": "未补造处理中响应协议。"
+        },
+        {
+          "item": "每次重试换键创建新请求并产生重复风险路径",
+          "status": "通过",
+          "revision_evidence": "客户端每次重试都更换键时，服务器会创建新请求；第一次支付的回复若恰好丢失，新的请求就可能再次进入支付处理。"
+        },
+        {
+          "item": "记录保留24小时，过后可能失效",
+          "status": "通过",
+          "revision_evidence": "键记录保留二十四小时；二十四小时过后，记录可能失效"
+        },
+        {
+          "item": "跨系统无限期唯一支付保证未提供",
+          "status": "通过",
+          "revision_evidence": "这里的保护范围是账户下、保留期内的键记录和处理规则；跨系统、无限期唯一支付的保证，给定规格没有提供。"
+        },
+        {
+          "item": "产品流程建议与接口保证保持区分",
+          "status": "通过",
+          "revision_evidence": "处理这类历史付款前，应先核对实际支付状态，再决定后续操作。",
+          "note": "该句采用流程建议语气，未指定额外接口协议。"
+        }
+      ],
+      "original_vs_revision": {
+        "facts": "两稿核心规格均完整；修订未依靠删去条件获得流畅度。",
+        "progression": "源稿M开场先给总判断，随后多次回到假设操作；R1从超时进入，先解释风险，再引入幂等键，实例连续性更强。",
+        "residual_cost": "R1前后两次展开相同的换键风险路径；结尾范围句名词密集。"
+      },
+      "format_and_timing": {
+        "status": "文本格式与估算算术通过；实际时长未验证",
+        "requested": "完整可直接口述的中文正文，附简短时间说明，目标六分钟。",
+        "full_body": true,
+        "note_sentence_count": 2,
+        "title": "一行标题，不属口述正文。",
+        "stage_directions": "两处画面说明、一处十秒演示、一处五秒停顿；合计十五秒。其余正文连续。",
+        "declared_readable_characters": 1090,
+        "verified_readable_characters": 1090,
+        "total_budget_seconds": 360,
+        "explicit_action_seconds": 15,
+        "spoken_budget_seconds": 345,
+        "verified_required_rate": 189.5652,
+        "declared_rate_rounded": 190,
+        "calculation": "1090 ÷ (345 ÷ 60) ≈ 189.6个可读字符／分钟。",
+        "practical_assessment": "六分钟安排与机械计数相容；附注明示为估算、尚未试讲，真实性表述合格。实际语速、术语停顿与换页耗时仍未通过真人计时确认。",
+        "false_measured_duration_claim": false
+      },
+      "targeted_revision_requests": [
+        {
+          "priority": "P2",
+          "anchor": "客户端每次重试都更换键时，服务器会创建新请求。",
+          "problem": "后面两句与前文“第一次已处理、回复丢失，加第二次新请求”的完整风险解释高度重复。",
+          "suggestion": "前文保留完整风险路径；此处只回收“每次换键会创建新请求”的规则，然后接二十四小时条件。",
+          "preserve": [
+            "换键创建新请求",
+            "第一次已处理但回复丢失时可能重复付款"
+          ]
+        },
+        {
+          "priority": "P3",
+          "anchor": "用户眼前的超时提示，对应的是一次等待结束，支付结果仍待确认。",
+          "problem": "前两句已说明等待结束与支付进度信息不足，此句形成连续同义归纳。",
+          "suggestion": "选留最清楚的一次区分，余处删减或改为引出重试决策。",
+          "preserve": [
+            "未收到回复",
+            "处理结果未知",
+            "服务器可能已经处理"
+          ]
+        },
+        {
+          "priority": "P3",
+          "anchor": "这里的保护范围是账户下、保留期内的键记录和处理规则；跨系统、无限期唯一支付的保证，给定规格没有提供。",
+          "problem": "账户范围、保留期和跨系统长期保证集中在一长句，术语密度高。",
+          "suggestion": "拆成两句，先说账户和二十四小时，再交代跨系统长期范围；事实含义保持完整。",
+          "preserve": [
+            "账户＋键",
+            "24小时",
+            "跨系统无限期保证未提供"
+          ]
+        }
+      ],
+      "critical_failures": []
+    },
+    {
+      "case_id": "F1_museum_revision",
+      "pair_id": "pair-2",
+      "final_preference": "P / F1",
+      "overall_status": "核心事实、关系、范围与必留句通过；整段改写符合任务；仍有一处依据口吻问题和两处口述密度问题。",
+      "complete_explanation": {
+        "status": "通过",
+        "chain": [
+          "成年观众提出五升与五公斤问题",
+          "内部容量与质量分别用升和公斤计量",
+          "同斗同刻线且同装法比较两批干燥材料",
+          "每种材料各一次，数值适用于批次和装法",
+          "旧展签术语先行，新展签从观众问题进入",
+          "字数、层次、顺序同时变化",
+          "观察安排与两个指标定义",
+          "停留和有效解释人数较高的局部结果",
+          "独立贡献、其他展柜、其他观众与长期记忆的检验范围",
+          "讲解建议回到问题、比较和测量条件"
+        ],
+        "lost_required_explanation": []
+      },
+      "fact_checks": [
+        {
+          "item": "场景、展柜、展签和数据为合成教学材料，听众为志愿讲解员与实习生",
+          "status": "通过",
+          "revision_evidence": "今天的培训采用一份合成教学案例，展柜、观众场景、展签和观察数据都为这次演练编写。",
+          "note": "开场称呼与培训听众一致，未声称讲者亲历。"
+        },
+        {
+          "item": "成年观众带孩子，原问题准确保留",
+          "status": "通过",
+          "revision_evidence": "一位成年观众带着孩子来到“五升木斗”展柜前，问：“五升米是不是就等于五公斤米？”"
+        },
+        {
+          "item": "开场场景与观察样本分开，孩子不计入成年样本",
+          "status": "通过",
+          "revision_evidence": "观察样本按这套规则另行选取，孩子不计入成年观众样本。",
+          "note": "较Q源稿补齐了显式区分。"
+        },
+        {
+          "item": "木斗为教学复制品，无年代来历；五升为校准的内部容量",
+          "status": "通过",
+          "revision_evidence": "教学复制品，材料没有提供年代和来历；内部容量经过校准，装到刻线处是五升；五升说的是木斗里面可容纳的空间"
+        },
+        {
+          "item": "升计量容积、公斤计量质量",
+          "status": "通过",
+          "revision_evidence": "升计量容积；米有多重，则要用公斤计量质量。"
+        },
+        {
+          "item": "同斗、同刻线、干燥、刮平、不压实、装法一致",
+          "status": "通过",
+          "revision_evidence": "这只木斗装到同一条刻线；两种干燥材料；都装到刻线处，刮平，不压实；木斗相同，装到的位置相同，装法也相同"
+        },
+        {
+          "item": "短粒米3.9公斤、红豆4.2公斤；各一次，批次与装法范围",
+          "status": "通过",
+          "revision_evidence": "这批短粒米称得三点九公斤，这批红豆称得四点二公斤；每种材料各测了一次，这两个数值对应这批材料和这次装法",
+          "note": "未写成全部米或红豆的固定换算。"
+        },
+        {
+          "item": "相同容积材料差别伴随质量差别，比较装法一致",
+          "status": "通过",
+          "revision_evidence": "同样五升，换成这批红豆，就称得四点二公斤；质量还与所装材料有关；比较时保持装法一致"
+        },
+        {
+          "item": "原版186字，术语在前，问题与数值在后",
+          "status": "通过",
+          "revision_evidence": "原版有一百八十六个汉字，开头先解释“容积计量”“等容异质”等术语，后面才出现观众的问题和两项称量数值。"
+        },
+        {
+          "item": "新版132字，32字入口＋100字细读，内容顺序正确",
+          "status": "通过",
+          "revision_evidence": "新版有一百三十二个汉字，分为三十二字的入口和一百字的细读内容；入口先呈现疑问，随即提醒区分容积与质量；细读提供刻线、两项数值和装法"
+        },
+        {
+          "item": "文字总量、信息层次、叙述顺序同时调整",
+          "status": "通过",
+          "revision_evidence": "新版同时减少了文字总量，分出了阅读层次，也调整了叙述顺序。"
+        },
+        {
+          "item": "连续两个周日下午，8个半小时，预排轮换、非随机",
+          "status": "通过",
+          "revision_evidence": "连续两个周日下午，共安排八个观察时段，每个时段半小时，两版轮换使用，先后次序预先排定，采用非随机安排。"
+        },
+        {
+          "item": "各时段按入厅顺序选前12名愿意回答的成人，每版4段48人，共96人",
+          "status": "通过",
+          "revision_evidence": "每个时段按入厅顺序，记录前十二名愿意接受离开展柜后提问的成年观众。每版各用四个时段，各记录四十八人，合计九十六人。"
+        },
+        {
+          "item": "长停留计时边界和阈值；18/48、29/48",
+          "status": "通过",
+          "revision_evidence": "进入展柜正前方开始计时，到移开脚步结束，超过二十秒记为一次长停留；原版四十八人中，有十八人；新版四十八人中，有二十九人"
+        },
+        {
+          "item": "停留记录范围；逐字阅读或完整读完情况无记录",
+          "status": "通过",
+          "revision_evidence": "记录到的是他们在展柜前停了多久，逐字阅读和完整读完展签的情况，材料没有记录。",
+          "note": "修正了Q中“看过哪些字……材料中另有提问记录”的范围混淆。"
+        },
+        {
+          "item": "离开展柜后一次提问，问题与有效解释标准一致",
+          "status": "通过",
+          "revision_evidence": "观众离开展柜后，再回答一句：“五升米是不是就等于五公斤米？”回答要同时说清升与公斤分别计量什么，并指出质量还与所装材料有关，才记为有效解释。"
+        },
+        {
+          "item": "有效解释14/48、25/48，当场提问，无长期追踪",
+          "status": "通过",
+          "revision_evidence": "两组仍各有四十八人，原版十四人给出有效解释，新版二十五人；当场回答记录之外，材料没有长期记忆追踪"
+        },
+        {
+          "item": "两指标新版人数较多，可继续试用观察，单项归因后续检验",
+          "status": "通过",
+          "revision_evidence": "新版对应的长停留人数和有效解释人数都更多，可以据此继续试用和观察新版；非随机安排；字数、层次和顺序同时改变；三个改动各自贡献了多少，要在后续分别检验"
+        },
+        {
+          "item": "一个展柜、两个下午、愿意回答的成人；其他展柜、观众群体、长期记忆范围",
+          "status": "通过",
+          "revision_evidence": "观察涉及一个展柜、这两个下午和这批愿意回答的成年观众；其他展柜、其他观众群体和长期记忆表现也各有待检验"
+        },
+        {
+          "item": "指定句原样自然保留一次",
+          "status": "通过",
+          "revision_evidence": "人站在展柜前，眼睛未必已经走进展览。",
+          "occurrences": 1,
+          "note": "在观众疑问与讲解入口之间，未孤立置于附注。"
+        },
+        {
+          "item": "依据材料讲述的口吻",
+          "status": "建议修订一处",
+          "revision_evidence": "观众看见“五升”，又想到买米时常用的“公斤”，想知道两者怎样对应。",
+          "note": "材料仅提供观众原问题；“想到买米时”加入了心理缘由。属于可局部修正的依据口吻问题，未改变计量关系或观察结果。"
+        }
+      ],
+      "original_vs_revision": {
+        "facts": "F1保留核心数值和测量条件，并显式补齐样本与孩子区分、逐字阅读和完整读完的记录范围、长期记忆追踪及其他观众群体范围。",
+        "original_fact_scope_issues": [
+          {
+            "anchor": "关于他看过哪些字、理解到哪一步，材料中另有提问记录。",
+            "issue": "一次离开展柜后回答可判断规定的解释内容，原文将看过哪些字与提问记录相连，范围含混；逐字阅读与完整读完无记录的条件未明确。"
+          },
+          {
+            "anchor": "三个改动各自的贡献，以及其他展柜的情况，属于后续检验的问题。",
+            "issue": "其他观众群体与长期记忆后续检验范围未明确。"
+          },
+          {
+            "anchor": "一位成年观众带着孩子",
+            "issue": "源稿保留场景，但样本段未显式说明场景与统计另按规则选取、孩子不计入。"
+          }
+        ],
+        "progression": "F1减少目录预告、自评知识点和报幕，保留观众问题作为主线，且以测量条件连接结果与范围。",
+        "residual_cost": "F1完整事实较多，观察安排集中、结尾测量条件重列，口述仍需停顿与拆句。"
+      },
+      "format_and_timing": {
+        "status": "完整正文、两句附注与估算算术通过；实际时长未验证",
+        "requested": "正常讲述约五至六分钟，完整中文正文，正文后最多两句话说明事实处理与预计时长。",
+        "full_body": true,
+        "substantive_paragraph_rewrite": true,
+        "note_sentence_count": 2,
+        "note_content": "第一句说明依据给定合成材料处理事实、数值与范围；第二句列出正文计数、语速预算及尚未试讲。",
+        "long_stage_directions": false,
+        "declared_readable_characters": 1296,
+        "verified_readable_characters": 1296,
+        "verified_required_rate_for_six_minutes": 216,
+        "verified_required_rate_for_five_minutes": 259.2,
+        "declared_rate_rounded": "每分钟216至259个可读字符",
+        "calculation": "1296 ÷ 6 = 216；1296 ÷ 5 = 259.2个可读字符／分钟。",
+        "practical_assessment": "估算区间与字数相容。密集数字和范围说明需要停顿，六分钟端更稳，五分钟端较紧；附注语速预算以全部时长计算，正常停顿会提高实际开口速度。文本长度支持约五至六分钟的安排，真人试讲仍未提供。",
+        "false_measured_duration_claim": false
+      },
+      "targeted_revision_requests": [
+        {
+          "priority": "P2",
+          "anchor": "观众看见“五升”，又想到买米时常用的“公斤”，想知道两者怎样对应。",
+          "problem": "“又想到买米时”替观众叙述了材料未提供的心理缘由，依据口吻稍有偏移。",
+          "suggestion": "改为针对观众问题的解释，例如“五升和公斤出现在同一个问题里，讲解就先说明这两个单位各量什么。”指定保留句仍原样一次。",
+          "preserve": [
+            "观众原问题",
+            "必留句原样一次",
+            "合成叙述与据材料讲述口吻"
+          ]
+        },
+        {
+          "priority": "P2",
+          "anchor": "连续两个周日下午，共安排八个观察时段，每个时段半小时，两版轮换使用，先后次序预先排定，采用非随机安排。",
+          "problem": "时段安排之后立即接十二人、四时段、四十八人、九十六人，连续数字与条件密度较高。",
+          "suggestion": "分为“时间和轮换安排”“选人规则和样本数”两个口述段；用短句与停顿组织，完整保留数据和非随机条件。",
+          "preserve": [
+            "两个连续周日下午",
+            "8个半小时时段",
+            "预排次序轮换",
+            "非随机安排",
+            "入厅顺序前12名愿意回答的成年人",
+            "每版4时段48人",
+            "合计96人",
+            "孩子排除与场景区分"
+          ]
+        },
+        {
+          "priority": "P3",
+          "anchor": "三个改动各自贡献了多少，要在后续分别检验，其他展柜、其他观众群体和长期记忆表现也各有待检验。",
+          "problem": "各因素贡献、跨场景与观众迁移、长期表现集中在一长尾句，报告口吻偏重。",
+          "suggestion": "拆开两至三句，先交代同时改动与非随机安排，再依次交代迁移和长期表现。",
+          "preserve": [
+            "三改动独立贡献待检验",
+            "其他展柜",
+            "其他观众群体",
+            "长期记忆"
+          ]
+        },
+        {
+          "priority": "P3",
+          "anchor": "回到那位观众的问题，讲解员可以先区分五升所量的空间与公斤所量的质量，再比较这批米和红豆的称量，随后补充同一刻线、刮平、不压实，以及每种材料各测一次的条件。",
+          "problem": "结尾句承担讲解顺序与全部测量条件两项任务，列举较长。",
+          "suggestion": "保留三步讲解顺序，将测量条件另成短句；如进一步精简，仅减少重列，正文前面准确的条件继续保留。",
+          "preserve": [
+            "先单位区分",
+            "再比较两批材料",
+            "后补测量条件",
+            "同刻线、刮平、不压实、各一次"
+          ]
+        }
+      ],
+      "critical_failures": []
+    }
+  ],
+  "critical_failures": [],
+  "final_judgment": {
+    "factual_integrity": "两份修订稿均未发现改变核心事实、数值、关系或范围的关键错误；F1一处新增心理缘由建议改成问题解释。",
+    "oral_quality": "首读偏好N与P，事实核查后维持。改进是段落组织与解释衔接的变化，余下重复和密度问题已逐段列明。",
+    "delivery": "R1与F1均为完整首次成品；附注计数、速度算术和两句格式相符；六分钟及五至六分钟均属待真人试讲的估算。",
+    "next_action": "先向作者报告以上定点问题，由作者决定后续修订；本评阅未修改稿件，未额外扩展测试。"
+  },
+  "publication": {
+    "original_record_sha256": "e7df94e4a09cf94d9cc25c812df7fa21a3d367f38051515f4624b25cccac246d",
+    "changes": "仅将机器绝对路径替换为仓库相对路径；评语、首读散列和输入散列保留。"
+  }
+}

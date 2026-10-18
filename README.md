@@ -4,6 +4,8 @@
 
 独立开源项目。`TED_pre_master` 是仓库与显示名称，兼容 Codex 的技能标识为 `ted-pre-master`。
 
+v1.1.0加强整段编辑：事实核对后继续重写生硬句群，沿具体观察和操作衔接，删去编稿口吻与重复收束。观点、贯穿实例和逐步解释的结构保留。参见[本版对照与评阅](evaluation/versions/1.1.0/results.md)。
+
 ## 使用
 
 ```text
@@ -30,15 +32,19 @@ python scripts/install_skill.py
 
 默认安装到 `~/.codex/skills/ted-pre-master/`；设置 `CODEX_HOME` 时使用其下的 `skills/ted-pre-master/`。也可用 `--dest` 指定目录。发布版ZIP内的 `ted-pre-master/` 同样可以解压到技能目录。
 
+升级时先备份现有技能目录，再安装到空目录。本地修改可从备份取回。
+
 ## 内容
 
 - [技能入口](SKILL.md)：按任务选择起稿、修订、重点处理或研究说明。
 - [TED研究依据](references/ted-evidence.md)：当前官方指导、六种作品定位、观察与编辑判断。
 - [结构设计](references/architecture.md)：观点、理解前提、可选路径、图表和收尾。
 - [中文口语编辑](references/spoken-chinese.md)：声线、具体动作、句群、节奏与原创改写。
+- [完整句群改写](references/paragraph-rewrites.md)：四组构造材料、原稿、修订正文及关系核对。
 - [事实与排练](references/facts-and-rehearsal.md)：来源反查、数字归属、时间与现场检查。
 - [行为评测协议](evaluation/protocol.md)：真实性、推理、听众、声线、时间及任务约束。
-- [实际评测记录](evaluation/results.md)：首次输出、独立评阅、问题修订及新增任务检验。
+- [v1.0.0评测记录](evaluation/results.md)：首次输出、独立评阅、问题修订及新增任务检验。
+- [v1.1.0表述修订记录](evaluation/versions/1.1.0/results.md)：本版回归和前向修订任务的实际结果。
 
 ## 排练检查
 

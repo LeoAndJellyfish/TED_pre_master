@@ -56,10 +56,31 @@ def validate(root: Path = ROOT) -> dict:
         verified += 1
 
     snapshot = json.loads((root / "evaluation/post-review-skill-manifest.json").read_text(encoding="utf-8"))
-    for relative, expected in snapshot["files"].items():
+    current_path = root / "evaluation/versions" / version / "skill-manifest.json"
+    if current_path.exists():
+        current_snapshot = json.loads(current_path.read_text(encoding="utf-8"))
+    elif version == "1.0.0":
+        current_snapshot = snapshot
+    else:
+        raise ValueError(f"Missing current-version skill snapshot: {version}")
+    if current_path.exists() and current_snapshot.get("version") != version:
+        raise ValueError("Current-version skill snapshot has a different version")
+    if set(current_snapshot["files"]) != {path.relative_to(root).as_posix() for path in files}:
+        raise ValueError("Current-version snapshot does not cover the complete payload")
+    for relative, expected in current_snapshot["files"].items():
         verify_digest(relative, expected)
-    for name in ("outputs/manifest.json", "outputs/revision-manifest.json", "forward/manifest.json"):
-        manifest = json.loads((root / "evaluation" / name).read_text(encoding="utf-8"))
+    manifests = [root / "evaluation" / name for name in
+                 ("outputs/manifest.json", "outputs/revision-manifest.json", "forward/manifest.json")]
+    if current_snapshot.get("evidence_manifest"):
+        manifests.append(root / current_snapshot["evidence_manifest"])
+    current_outputs = 0
+    for manifest_path in manifests:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if current_snapshot.get("evidence_manifest") and manifest_path == root / current_snapshot["evidence_manifest"]:
+            if manifest.get("version") != version:
+                raise ValueError("Current-version evidence manifest has a different version")
+        if manifest.get("version") == version:
+            current_outputs += len(manifest["outputs"])
         for row in manifest["outputs"]:
             verify_digest(row["file"], row["sha256"])
             if "parent_file" in row:
@@ -70,9 +91,11 @@ def validate(root: Path = ROOT) -> dict:
             verify_digest(manifest["frozen_skill_manifest"], manifest["skill_manifest_sha256"])
     forward = json.loads((root / "evaluation/forward/cases.json").read_text(encoding="utf-8"))["cases"]
     verify_digest("evaluation/forward/cases.json", snapshot["forward_cases_sha256"])
+    if current_snapshot.get("forward_input_sha256"):
+        verify_digest(f"evaluation/versions/{version}/forward-case.json", current_snapshot["forward_input_sha256"])
     return {"status": "passed", "version": version, "payload_files": len(files),
             "local_links": links, "evaluation_tasks": len(cases), "forward_tasks": len(forward),
-            "evidence_hashes_verified": verified}
+            "current_version_trial_outputs": current_outputs, "evidence_hashes_verified": verified}
 
 
 if __name__ == "__main__":

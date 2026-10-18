@@ -1,0 +1,319 @@
+{
+  "schema_version": "1.0",
+  "review_id": "v1.1_author_revision_follow_up",
+  "review_type": "received_author_revision_verification",
+  "reviewer": {
+    "kind": "AI_text_reviewer",
+    "model": null,
+    "human_trial_delivery": false
+  },
+  "experimental_status": {
+    "independent_first_read": false,
+    "model_control_experiment": false,
+    "author_revision_received": true,
+    "description": "本次是在作者收到首轮评阅并提交定点修订之后进行的复核。评阅者已见过首稿、事实包与此前意见。本记录仅判断列出的具体问题是否解决、必需内容是否保留及附注算术是否相符。",
+    "new_blind_comparison": false
+  },
+  "scope": {
+    "inspected_manuscripts": [
+      "evaluation/versions/1.1.0/outputs/revised/R1.md",
+      "evaluation/versions/1.1.0/outputs/revised/F1.md"
+    ],
+    "factual_reference_method": "沿用前轮已经阅读的冻结事实包及判读规则，本轮核验其SHA-256与前轮一致，并逐项对照修订正文。",
+    "author_revision_record_read": false,
+    "extra_tests_performed": [],
+    "manuscript_or_skill_edits": [],
+    "prior_review_edits": [],
+    "verification_operations": [
+      "两份修订正文的定点文本复核",
+      "冻结事实与必留范围核对",
+      "可读字符、显式动作秒数、附注句数、必留句次数及速度算术核算",
+      "输入与旧评阅文件SHA-256核验"
+    ],
+    "character_count_method": "附注之前的正文剔除Markdown标题、方括号画面及动作说明；统计CJK统一表意文字、扩展A、ASCII字母和数字，标点与空白不计。"
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "revised_outputs": {
+      "R1": {
+        "path": "evaluation/versions/1.1.0/outputs/revised/R1.md",
+        "sha256": "2e459ef1f736f73a5040eb6ab2c987c8c4af3f101200cb831a4932f04c3aa1b2",
+        "readable_characters": 962,
+        "explicit_action_seconds": 15,
+        "note_sentence_count": 2,
+        "required_rate_for_360_seconds": 167.304348,
+        "required_rate_for_300_seconds": 202.526316,
+        "required_sentence_occurrences": 0
+      },
+      "F1": {
+        "path": "evaluation/versions/1.1.0/outputs/revised/F1.md",
+        "sha256": "faa7ceab969f7862220e57ef8822369ae8bda8db771f3f722a640792b4721936",
+        "readable_characters": 1195,
+        "explicit_action_seconds": 0,
+        "note_sentence_count": 2,
+        "required_rate_for_360_seconds": 199.166667,
+        "required_rate_for_300_seconds": 239,
+        "required_sentence_occurrences": 1
+      }
+    },
+    "reference_sha256": {
+      "regression-case.json": "f7122d4c1cdb8b2fa104ae541bd2c25fb9dcdaccc269ca8f6442f64f9e70fcbb",
+      "forward-case.json": "2a4e0d6e22db331c33880bb2119ed1207c803cfe44008f60044d9f73e7d25619",
+      "forward-judge-notes.md": "8e32e1e640d8104c628d21d2db4fd3c321092dde658df74d0eb08ca10ba5016a",
+      "first-read.json": "2b3d478ffd54f784d7956cb9909c26b9f190247b1a12cffc62a796a7c79be192",
+      "paired-review.json": "e7df94e4a09cf94d9cc25c812df7fa21a3d367f38051515f4624b25cccac246d"
+    },
+    "reference_unchanged": {
+      "regression_case": true,
+      "forward_case": true,
+      "forward_judge_notes": true,
+      "first_read": true,
+      "paired_review": true
+    },
+    "previous_records_preserved": true
+  },
+  "results": [
+    {
+      "artifact": "R1",
+      "overall_status": "通过本轮定点复核",
+      "issue_resolution": [
+        {
+          "previous_issue": "换键导致重复付款的风险路径完整出现两次。",
+          "status": "已解决",
+          "current_evidence": [
+            "第一次已经处理、回复却丢失，加上第二次的新请求，就形成了重复扣款的风险。",
+            "客户端每次重试都更换键，会创建新请求。"
+          ],
+          "assessment": "保留前处完整风险路径，后处仅作一行规则回收，原有重复已消除。"
+        },
+        {
+          "previous_issue": "超时与未知结果连续同义归纳。",
+          "status": "已解决",
+          "current_evidence": "十秒过去，客户端显示超时。服务器可能已经处理了支付，只是回复在途中丢失。页面上的提示告诉我们，十秒内没有收到回复，付款结果还要确认。",
+          "assessment": "三句分别交代客户端状态、服务器可能状态和需确认结果，删去此前重复归纳；关键关系完整。"
+        },
+        {
+          "previous_issue": "账户、保留期、跨系统无限期保证集中在一长句。",
+          "status": "已解决",
+          "current_evidence": "这套规则针对同一账户下、二十四小时内保留的键记录。跨系统、无限期的唯一支付保证，规格没有提供。",
+          "assessment": "范围拆成两句，含义保留。"
+        }
+      ],
+      "facts_and_scope": {
+        "status": "完整",
+        "preserved_checks": [
+          {
+            "item": "合成规格、假设操作、客户端与服务器解释",
+            "evidence": "我们来看一套合成的支付接口规格，用一次假设操作；网页或应用称为客户端，另一端接收请求、处理支付并返回结果称为服务器。"
+          },
+          {
+            "item": "十秒等待、可能已处理、回复丢失、结果需确认",
+            "evidence": "页面上的提示告诉我们，十秒内没有收到回复，付款结果还要确认。"
+          },
+          {
+            "item": "同业务首次及后续请求使用同一幂等键，并保持请求内容",
+            "evidence": "同一笔业务付款从首次发送到后续重试，都携带同一个识别标记；仍然使用键A，并保持原来的请求内容。"
+          },
+          {
+            "item": "账户＋键作用范围",
+            "evidence": "键A要连同所属账户一起识别；不同账户各有自己的记录。"
+          },
+          {
+            "item": "同键同内容返回已保存结果；同键不同内容拒绝",
+            "evidence": "支付已经完成、结果已经保存时，服务器就返回保存的结果；金额改为一百二十元却继续使用键A会拒绝。"
+          },
+          {
+            "item": "原子占用及并发相同规则",
+            "evidence": "在一个完整步骤中检查并占用该账户下的键；其他同时到达的请求也必须遵守同一项键记录。"
+          },
+          {
+            "item": "处理中与最终结果记录",
+            "evidence": "占用之后，服务器还要记录处理中状态，最后保存处理结果。"
+          },
+          {
+            "item": "换键创建新请求及重复风险路径",
+            "evidence": "前文完整说明已处理、回复丢失与第二次新请求的风险，后文保留换键创建新请求。"
+          },
+          {
+            "item": "二十四小时保留，过后可能失效，核对状态为流程建议",
+            "evidence": "二十四小时过后，记录可能失效，处理这类历史付款前，应先核对实际支付状态，再决定后续操作。"
+          },
+          {
+            "item": "账户内、保留期范围及跨系统无限期保证未提供",
+            "evidence": "同一账户下、二十四小时内保留的键记录；跨系统、无限期的唯一支付保证，规格没有提供。"
+          }
+        ],
+        "omitted_required_items": [],
+        "introduced_substantive_fact_errors": [],
+        "unsupported_protocol_details": [],
+        "note": "结尾“继续发送原键和原内容，服务器就能沿用这笔付款的记录”紧接同时到达规则与二十四小时保留期的核对条件，整段范围仍完整。"
+      },
+      "format_and_timing": {
+        "status": "计数、附注格式与算术相符",
+        "readable_characters_expected": 962,
+        "readable_characters_verified": 962,
+        "explicit_action_seconds_expected": 15,
+        "explicit_action_seconds_verified": 15,
+        "total_budget_seconds": 360,
+        "spoken_budget_seconds": 345,
+        "required_rate_verified": 167.304348,
+        "rate_declared_rounded": 167,
+        "calculation": "962 ÷ (345 ÷ 60) = 167.304348个可读字符／分钟，约167。",
+        "note_sentence_count": 2,
+        "duration_claim": "六分钟为文字计数及动作预算所得估算，附注明示尚未试讲。",
+        "actual_delivery_time_verified": false
+      },
+      "remaining_required_revisions": [],
+      "critical_failures": []
+    },
+    {
+      "artifact": "F1",
+      "overall_status": "通过本轮定点复核",
+      "issue_resolution": [
+        {
+          "previous_issue": "替观众补写“想到买米时常用的公斤”的心理缘由。",
+          "status": "已解决",
+          "current_evidence": "人站在展柜前，眼睛未必已经走进展览。眼前这个问题提供了讲解的起点：五升和五公斤各量什么？",
+          "assessment": "删除心理推测，改为分析问题中的单位，仍自然承接原观众问题。"
+        },
+        {
+          "previous_issue": "观察时间、轮换和选人规则及连续样本数字集中。",
+          "status": "已解决",
+          "current_evidence": [
+            "连续两个周日下午，案例安排了八个半小时的观察时段。两版展签轮换使用，先后次序预先排定，采用非随机安排。",
+            "每个时段按入厅顺序，记录前十二名愿意接受离开展柜后提问的成年观众。每版各用四个时段，各记录四十八人，合计九十六人。"
+          ],
+          "assessment": "观察安排与选人样本分为两个段落，时间与轮换也拆成短句，密度问题按建议处理，数字条件均保留。"
+        },
+        {
+          "previous_issue": "独立贡献、其他展柜与观众、长期表现集中在一长尾句。",
+          "status": "已解决",
+          "current_evidence": "三个改动各自贡献了多少，要在后续分别检验。其他展柜、其他观众群体和长期记忆表现，也要另作检验。",
+          "assessment": "拆为两句，分别交代改动贡献与适用范围，条件完整。"
+        },
+        {
+          "previous_issue": "结尾同时重列讲解顺序和全部测量条件。",
+          "status": "已解决",
+          "current_evidence": "面对那位观众，讲解员可以先回答升与公斤各量什么，再比较这批米和红豆的称量，随后说明这次称量的材料和装法。",
+          "assessment": "结尾收束为三步讲解顺序，测量细节已在正文准确保留，无需在结尾完整重列。"
+        }
+      ],
+      "facts_scope_and_required_sentence": {
+        "status": "完整",
+        "preserved_checks": [
+          {
+            "item": "合成教学材料、培训听众、原观众及孩子场景、原问题",
+            "evidence": "展柜、观众场景、展签和观察数据都为演练编写；成年观众带孩子问“五升米是不是就等于五公斤米？”。"
+          },
+          {
+            "item": "教学复制品、年代来历未提供、校准内部五升容量",
+            "evidence": "内部容量经过校准，装到刻线处是五升；指木斗内部可容纳的空间。"
+          },
+          {
+            "item": "容积与质量区别",
+            "evidence": "升计量容积；米有多重，则要用公斤计量质量。"
+          },
+          {
+            "item": "同斗、同刻线、两种干燥材料、刮平、不压实",
+            "evidence": "同一条刻线；两种干燥材料；刮平，不压实；木斗、位置和装法相同。"
+          },
+          {
+            "item": "短粒米3.9公斤、红豆4.2公斤，各测一次、批次与装法范围、装法一致",
+            "evidence": "每种材料各测了一次，这两个数值对应这批材料和这次装法；比较时保持装法一致。"
+          },
+          {
+            "item": "原版186字，术语在前，问题与数值在后",
+            "evidence": "一百八十六个汉字，先解释“容积计量”“等容异质”，后出现问题和两项称量数值。"
+          },
+          {
+            "item": "新版132字，入口32、细读100；入口问题及单位区分，细读刻线、数值、装法",
+            "evidence": "一百三十二个汉字，分为三十二字入口和一百字细读内容；内容安排准确。"
+          },
+          {
+            "item": "文字总量、信息层次和顺序同时改变",
+            "evidence": "新版同时减少了文字总量，分出了阅读层次，也调整了叙述顺序。"
+          },
+          {
+            "item": "连续两个周日下午、8个半小时、预排轮换、非随机",
+            "evidence": "观察安排段全部保留。"
+          },
+          {
+            "item": "每时段入厅顺序前12名愿意回答的成年人；每版4时段48人、共96人",
+            "evidence": "样本段全部保留。"
+          },
+          {
+            "item": "开场场景与样本规则区分，孩子排除",
+            "evidence": "观察样本按这套规则另行选取，孩子不计入成年观众样本。"
+          },
+          {
+            "item": "停留边界、超过20秒、18/48与29/48",
+            "evidence": "进入展柜正前方至移开脚步；原版十八人，新版二十九人，两组各四十八人。"
+          },
+          {
+            "item": "逐字阅读及完整读完的记录范围",
+            "evidence": "逐字阅读和完整读完展签的情况，材料没有记录。"
+          },
+          {
+            "item": "离开展柜后一句原问题，有效解释同时要求两类计量与材料关系",
+            "evidence": "同时说清升与公斤分别计量什么，并指出质量还与所装材料有关，才记为有效解释。"
+          },
+          {
+            "item": "有效解释14/48与25/48、当场提问、无长期追踪",
+            "evidence": "两组各四十八人，原版十四人，新版二十五人；材料没有长期记忆追踪。"
+          },
+          {
+            "item": "新版两指标人数更多，可继续试用观察",
+            "evidence": "新版对应的长停留人数和有效解释人数都更多，可以据此继续试用和观察新版。"
+          },
+          {
+            "item": "单展柜、两下午、愿意回答的成人，非随机与同时改动；独立贡献、其他展柜、观众、长期记忆待检验",
+            "evidence": "范围说明保留所有条件，并将最后两类检验拆句。"
+          }
+        ],
+        "required_sentence": {
+          "exact_text": "人站在展柜前，眼睛未必已经走进展览。",
+          "occurrences": 1,
+          "status": "原样一次，衔接自然",
+          "placement": "观众原问题之后，以“眼前这个问题提供了讲解的起点”连接单位解释。"
+        },
+        "omitted_required_items": [],
+        "introduced_substantive_fact_errors": [],
+        "unsupported_psychological_attribution": []
+      },
+      "format_and_timing": {
+        "status": "计数、附注格式与算术相符",
+        "readable_characters_expected": 1195,
+        "readable_characters_verified": 1195,
+        "explicit_action_seconds_expected": 0,
+        "explicit_action_seconds_verified": 0,
+        "budget_seconds": [
+          300,
+          360
+        ],
+        "required_rate_for_six_minutes": 199.166667,
+        "required_rate_for_five_minutes": 239,
+        "rate_declared_rounded": "199至239",
+        "calculation": "1195 ÷ 6 = 199.166667；1195 ÷ 5 = 239个可读字符／分钟。",
+        "note_sentence_count": 2,
+        "note_content": "第一句交代事实依据，第二句交代计数、五至六分钟预算、语速及尚未试讲。",
+        "duration_claim": "五至六分钟为文本预算，附注明示尚未实际试讲。",
+        "actual_delivery_time_verified": false
+      },
+      "remaining_required_revisions": [],
+      "critical_failures": []
+    }
+  ],
+  "final_judgment": {
+    "status": "两份定点修订通过",
+    "resolved": "前轮列出的重复、心理缘由和密度问题均已按建议处理。",
+    "retained": "核心事实、关系、数值、适用范围及F1必留句保持完整。",
+    "arithmetic": "R1 962字符、15秒动作、约167字符／分钟；F1 1195字符、0秒动作、约199至239字符／分钟，均与附注一致。",
+    "limitations": "这是作者修订后的AI文本复核；未开展独立首读、模型控制实验或真人试讲。",
+    "further_required_revisions": []
+  },
+  "publication": {
+    "original_record_sha256": "3088d74aa8ff7147b5c23cef30b414ea9e47c4969e2324720233e129395ac3df",
+    "changes": "仅替换机器绝对路径为仓库相对路径；复核结论与稿件散列保留。",
+    "reference_digest_note": "reference_sha256中的paired-review.json散列对应原始评阅记录，可与公开paired-review.json的publication.original_record_sha256核对。"
+  }
+}

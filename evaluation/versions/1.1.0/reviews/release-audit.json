@@ -1,0 +1,64 @@
+{
+  "version": "1.1.0",
+  "status": "passed_scoped_release_audit",
+  "review_mode": "只读差异审查；未运行完整测试，未联网，未读取私人课程目录",
+  "hard_blockers": [],
+  "checks": {
+    "current_payload": {
+      "status": "passed",
+      "files": 9,
+      "manifest": "evaluation/versions/1.1.0/skill-manifest.json",
+      "path_set_matches": true,
+      "sha256_mismatches": []
+    },
+    "historical_snapshot": {
+      "status": "passed",
+      "manifest": "evaluation/post-review-skill-manifest.json",
+      "comparison_target": "v1.0.0",
+      "tag_content_sha256_mismatches": [],
+      "historical_manifests_changed_since_tag": []
+    },
+    "original_examples": {
+      "status": "passed",
+      "electricity": "两户、24时段、8.4千瓦时及0.4/2.1千瓦时均对应资料卡；未增写行为成因。",
+      "retry": "容量100、背景80、重试40、等待1秒及0.5至4.5秒、峰值120/96与排队均对应资料卡；结论限于该轮测试。",
+      "archives": "1931提议、1932规定、1933转载及8至6小时均对应资料卡；执行日期仍指向考勤簿查证。",
+      "teaching": "60人、每组30人、20分钟、均值12至16/13均对应资料卡；4分与1分为直接差值，解释保留研究者归属与可能语气。"
+    },
+    "portability_and_constraints": {
+      "status": "passed",
+      "personal_banlist_generalization": false,
+      "other_local_skill_runtime_dependency": false,
+      "note": "技能正文提供完整两遍编辑流程。academic-less-ai-tone只出现于开发评测来源记录，载荷无需安装该技能。"
+    },
+    "public_text_scan": {
+      "status": "passed",
+      "text_files_scanned": 67,
+      "excluded_directories": [
+        ".git",
+        "dist",
+        "__pycache__",
+        ".venv"
+      ],
+      "personal_absolute_path_findings": [],
+      "credential_shape_findings": [],
+      "private_course_text_findings": [],
+      "note": "检查拟公开仓库文本与新增版本案例；无私人课程原稿发现。"
+    },
+    "validator_change": {
+      "status": "passed",
+      "note": "当前版本按版本目录清单核对完整载荷，历史证据按既有冻结清单关联核验；未错误要求旧载荷摘要匹配当前修订文件。"
+    }
+  },
+  "nonblocking_suggestions": [
+    {
+      "file": "scripts/validate_package.py",
+      "suggestion": "增加current_snapshot.version与VERSION的一致性检查，提前识别清单元数据误填。"
+    },
+    {
+      "file": "scripts/validate_package.py",
+      "suggestion": "增加当前证据清单version字段一致性断言，避免清单元数据误填时仅返回current_version_trial_outputs为0。"
+    }
+  ],
+  "scope_note": "新输出和评阅正汇入；未将尚未完成的证据附件或报告末段列为失败。本结论仅覆盖已审查差异、载荷摘要、示例资料卡和公开文本。"
+}

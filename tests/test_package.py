@@ -15,6 +15,14 @@ spec.loader.exec_module(release)
 
 
 class PackageChecks(unittest.TestCase):
+    def test_new_version_requires_its_own_payload_snapshot(self):
+        with tempfile.TemporaryDirectory() as directory:
+            copy = Path(directory) / "repository"
+            shutil.copytree(ROOT, copy, ignore=shutil.ignore_patterns(".git", "dist", "__pycache__", ".venv"))
+            (copy / "VERSION").write_text("99.0.0\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "Missing current-version skill snapshot: 99.0.0"):
+                validate(copy)
+
     def test_tampered_published_output_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             copy = Path(directory) / "repository"

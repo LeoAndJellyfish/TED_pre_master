@@ -1,0 +1,65 @@
+{
+  "version": "1.1.0",
+  "editor": "root_author",
+  "model": null,
+  "human_trial_delivery": false,
+  "trigger": "独立匿名比较及事实核查后的定点反馈",
+  "skill_payload_changed_after_freeze": false,
+  "first_outputs_preserved": true,
+  "changes": {
+    "R1": [
+      "压缩超时段的同义复述",
+      "换键段只回收创建新请求规则",
+      "保护范围拆句",
+      "结尾保留实际核对项"
+    ],
+    "F1": [
+      "删除未由材料支持的心理缘由",
+      "观察安排与选样规则分段",
+      "结尾范围拆句",
+      "缩短重复列举的讲解建议"
+    ]
+  },
+  "mechanical_counts": {
+    "R1": {
+      "kind": "mechanical_rehearsal_notes",
+      "section": null,
+      "counting_rule": "Han characters + ASCII digits + Latin letters; punctuation excluded",
+      "spoken_characters": 962,
+      "han_characters": 957,
+      "digits": 0,
+      "latin_letters": 5,
+      "fixed_cue_seconds": 15.0,
+      "user_constraint_hits": [],
+      "quality_assessment": "requires source checking, listening and rehearsal"
+    },
+    "F1": {
+      "kind": "mechanical_rehearsal_notes",
+      "section": null,
+      "counting_rule": "Han characters + ASCII digits + Latin letters; punctuation excluded",
+      "spoken_characters": 1195,
+      "han_characters": 1195,
+      "digits": 0,
+      "latin_letters": 0,
+      "fixed_cue_seconds": 0.0,
+      "user_constraint_hits": [],
+      "quality_assessment": "requires source checking, listening and rehearsal"
+    }
+  },
+  "outputs": [
+    {
+      "task": "R1",
+      "file": "evaluation/versions/1.1.0/outputs/revised/R1.md",
+      "sha256": "2e459ef1f736f73a5040eb6ab2c987c8c4af3f101200cb831a4932f04c3aa1b2",
+      "parent_file": "evaluation/versions/1.1.0/outputs/R1.md",
+      "parent_sha256": "8a041cc6981d62aae2dbd9bd4055966a8eed983cc443031275db8b75f97761cb"
+    },
+    {
+      "task": "F1",
+      "file": "evaluation/versions/1.1.0/outputs/revised/F1.md",
+      "sha256": "faa7ceab969f7862220e57ef8822369ae8bda8db771f3f722a640792b4721936",
+      "parent_file": "evaluation/versions/1.1.0/outputs/F1.md",
+      "parent_sha256": "9a551cf33c6f78126d0c32c9a878b7f8caa651f3943d2ea0f7b7d4102485e99b"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "version": "1.1.0",
+  "frozen_skill_manifest": "evaluation/versions/1.1.0/skill-manifest.json",
+  "skill_manifest_sha256": "d892c9aca80f63314b6080be90b929a2df6c3e0fea2f2034effbcefc981d930c",
+  "outputs": [
+    {
+      "task": "R1",
+      "file": "evaluation/versions/1.1.0/outputs/R1.md",
+      "sha256": "8a041cc6981d62aae2dbd9bd4055966a8eed983cc443031275db8b75f97761cb"
+    },
+    {
+      "task": "F1",
+      "file": "evaluation/versions/1.1.0/outputs/F1.md",
+      "sha256": "9a551cf33c6f78126d0c32c9a878b7f8caa651f3943d2ea0f7b7d4102485e99b"
+    },
+    {
+      "task": "R1",
+      "file": "evaluation/versions/1.1.0/outputs/revised/R1.md",
+      "sha256": "2e459ef1f736f73a5040eb6ab2c987c8c4af3f101200cb831a4932f04c3aa1b2",
+      "parent_file": "evaluation/versions/1.1.0/outputs/R1.md",
+      "parent_sha256": "8a041cc6981d62aae2dbd9bd4055966a8eed983cc443031275db8b75f97761cb"
+    },
+    {
+      "task": "F1",
+      "file": "evaluation/versions/1.1.0/outputs/revised/F1.md",
+      "sha256": "faa7ceab969f7862220e57ef8822369ae8bda8db771f3f722a640792b4721936",
+      "parent_file": "evaluation/versions/1.1.0/outputs/F1.md",
+      "parent_sha256": "9a551cf33c6f78126d0c32c9a878b7f8caa651f3943d2ea0f7b7d4102485e99b"
+    }
+  ],
+  "resources": {
+    "evaluation/versions/1.1.0/blind-texts/pair-1-M.md": "4922e4b97bae0a0e4a301b38570e057b6d4d3fe0c5be715b7852fb3471c4eed6",
+    "evaluation/versions/1.1.0/blind-texts/pair-1-N.md": "d69e8ace5de4f092ca05e9687d22dfe3e40c3d243b7bbe73adaa97fb617b7d9d",
+    "evaluation/versions/1.1.0/blind-texts/pair-2-P.md": "3cd7232351d6580a37e1a7e5f00f380f408a8006dec5673c59e7b78dd92b2326",
+    "evaluation/versions/1.1.0/blind-texts/pair-2-Q.md": "8d19b4a61dbcbfcca18c4dbe1a8342dcfb536d1a6ddcd4766b2bc494c6af6403",
+    "evaluation/versions/1.1.0/example-preflight.json": "8ee6bce3a09bdfc659c6ab021b2a1cc64d6b4bff1fed76de281944f4a6c7eea3",
+    "evaluation/versions/1.1.0/forward-case.json": "2a4e0d6e22db331c33880bb2119ed1207c803cfe44008f60044d9f73e7d25619",
+    "evaluation/versions/1.1.0/forward-judge-notes.md": "8e32e1e640d8104c628d21d2db4fd3c321092dde658df74d0eb08ca10ba5016a",
+    "evaluation/versions/1.1.0/generation-record.json": "cf450f324374298dd4d082ffe6d92d44c699cc81af20ec4033aa69c939bda0c9",
+    "evaluation/versions/1.1.0/regression-case.json": "f7122d4c1cdb8b2fa104ae541bd2c25fb9dcdaccc269ca8f6442f64f9e70fcbb",
+    "evaluation/versions/1.1.0/results.md": "cfbb7c3a7e260e0e98ab44102cf156c9666b6522af40ec2168b8c0096793507c",
+    "evaluation/versions/1.1.0/review-mapping.json": "2695d2acd71611bc3c455c6c641154f99f3753f30618ff9291112c074144e681",
+    "evaluation/versions/1.1.0/reviews/first-read.json": "2b3d478ffd54f784d7956cb9909c26b9f190247b1a12cffc62a796a7c79be192",
+    "evaluation/versions/1.1.0/reviews/paired-review.json": "db7a4ce60f624328b1c1461f67c40c957b9cd508c89d6e383da7c7f51da0b711",
+    "evaluation/versions/1.1.0/reviews/release-audit.json": "f246d4b5e71dec8dd340b65c08876fca2e20d1acf2a1f380771b1c998d4e88bc",
+    "evaluation/versions/1.1.0/reviews/revision-verification.json": "1fdaae429c175d078c19bf0f7db3a08444db1d61026ffbe2b4e588643762fb03",
+    "evaluation/versions/1.1.0/revision-record.json": "d65125c94882bd5a42ccbbb2e7b62075a41d9c5d9bbee2a13a5f4190591cd191"
+  }
+}
